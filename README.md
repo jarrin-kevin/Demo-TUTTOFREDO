@@ -8,7 +8,7 @@ Funciona en vertical (tótem 1080×1920) y en horizontal.
 
 ## Flujo
 
-1. **Inicio**: fotos del menú rotando, "Toca para ordenar".
+1. **Inicio**: video de invitación en bucle (brownie + helado), "Toca para ordenar".
 2. **Menú**: los 9 grupos.
 3. **Grupo**: barra lateral con los grupos y pestañas si hay subcategorías (ej. Helado artesanal / Helado soft). El botón `+` agrega directo los productos sin opciones.
 4. **Personalizar**: opciones obligatorias marcadas (sabor, jugo, bebida caliente, tamaño…). No deja agregar hasta completarlas.
