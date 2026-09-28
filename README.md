@@ -2,44 +2,9 @@
 
 Kiosko de autopedido con el menú real de Tutto Freddo Challuabamba (81 productos, fotos y precios).
 
-La app está hecha en **React 18 + Vite** y vive en `frontend/src/`:
+**Demo:** https://jarrin-kevin.github.io/Demo-TUTTOFREDO/
 
-```
-frontend/src/
-├── App.jsx            # navegación entre pantallas, carrito, inactividad
-├── screens/           # Attract, Menu, Group, Cart, Payment, PayTerminal, Done
-├── components/        # ProductSheet, ProductCard, Dialog, ui (TopBar, CartBar…)
-├── lib/               # catálogo, carrito, validación de cédula/RUC
-└── data/catalog.json  # generado desde data/
-```
-
-`Untitled.html` (wireframe) y `design/kiosko-tuttofredo.html` (prototipo previo) son solo referencia de diseño.
-
-## Correr el demo
-
-Requiere Node 18 o superior.
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Abre la URL que aparece (por defecto http://localhost:5173). Para usarlo como tótem, abre Chrome en pantalla completa (F11) o en modo kiosko:
-
-```bash
-chrome --kiosk http://localhost:5173
-```
-
-Funciona en vertical (tótem 1080×1920) y en horizontal (laptop).
-
-## Publicado en GitHub Pages
-
-Cada push a la rama `claude/tuttofredo-payment-totem-16yzp8` se publica solo con `.github/workflows/pages.yml` en:
-
-https://jarrin-kevin.github.io/Demo-TUTTOFREDO/
-
-Solo hace falta configurarlo una vez: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+Funciona en vertical (tótem 1080×1920) y en horizontal.
 
 ## Flujo
 
@@ -54,18 +19,28 @@ Solo hace falta configurarlo una vez: **Settings → Pages → Build and deploym
 
 Si nadie toca la pantalla durante 75 s, pregunta "¿Sigues ahí?" y a los 15 s vuelve al inicio.
 
+## Código
+
+Hecho en **React 18 + Vite**, en `frontend/src/`:
+
+```
+frontend/src/
+├── App.jsx            # navegación entre pantallas, carrito, inactividad
+├── screens/           # Attract, Menu, Group, Cart, Payment, PayTerminal, Done
+├── components/        # ProductSheet, ProductCard, Dialog, ui (TopBar, CartBar…)
+├── lib/               # catálogo, carrito, validación de cédula/RUC
+└── data/catalog.json  # generado desde data/
+```
+
+`Untitled.html` (wireframe) y `design/kiosko-tuttofredo.html` (prototipo previo) son solo referencia de diseño.
+
 ## Datos
 
-- `data/catalog-raw.json`: menú crudo bajado de Clickeame (solo menú y datos públicos del local).
+- `data/catalog-raw.json`: menú crudo bajado de Clickeame.
 - `data/kiosk-config.js`: ajustes del tótem (9 grupos, IVA, sugerencia de bebidas, nombres corregidos, sabor obligatorio).
-- `frontend/src/data/catalog.json`: catálogo que usa la app. **No se edita a mano**; se genera así:
-
-```bash
-node data/build-catalog.js --skip-images   # regenera el JSON sin volver a bajar fotos
-node data/build-markdown.js                # regenera CATALOGO.md
-```
+- `frontend/src/data/catalog.json`: catálogo que usa la app, generado a partir de los dos anteriores.
 
 ## Pendiente para producción
 
-- Integración real del datáfono (Datafast) y de Deuna. Hoy el cobro está simulado en `frontend/src/screens/PayTerminal.jsx`.
-- Envío del pedido a cocina/POS y emisión de la factura electrónica. Hoy el pedido solo se registra en la consola del navegador (`finishOrder` en `App.jsx`).
+- Integración real del datáfono (Datafast) y de Deuna. Hoy el cobro está simulado.
+- Envío del pedido a cocina/POS y emisión de la factura electrónica.
