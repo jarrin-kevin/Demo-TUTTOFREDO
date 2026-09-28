@@ -1,0 +1,2272 @@
+{
+  "branch": {
+    "name": "Tutto Freddo - Challuabamba",
+    "address": "Av. del Bombero y Challuabamba",
+    "brandColor": "#fe742a",
+    "logo": "/images/brand/logo.webp",
+    "cover": "/images/brand/cover.webp",
+    "currency": "USD",
+    "taxRate": 0.15,
+    "pricesIncludeTax": true
+  },
+  "groups": [
+    {
+      "slug": "desayunos",
+      "name": "Desayunos",
+      "image": "/images/products/desayuno-costeno.webp",
+      "cover": "/images/products/desayunos-cover.webp",
+      "categories": [
+        "desayunos",
+        "pancakes"
+      ]
+    },
+    {
+      "slug": "sanduches-y-snacks",
+      "name": "Sánduches y Snacks",
+      "image": "/images/products/club.webp",
+      "cover": "/images/products/sanduches-cover.webp",
+      "categories": [
+        "sanduches",
+        "nueva-linea-de-sal"
+      ]
+    },
+    {
+      "slug": "pizzas-y-lasana",
+      "name": "Pizzas y Lasaña",
+      "image": "/images/products/hawayana.webp",
+      "cover": "/images/products/pizza-cover.webp",
+      "categories": [
+        "pizza",
+        "lasana"
+      ]
+    },
+    {
+      "slug": "alitas-y-ensaladas",
+      "name": "Alitas y Ensaladas",
+      "image": "/images/products/alitas.webp",
+      "cover": "/images/products/alitas-bbq-cover.webp",
+      "categories": [
+        "alitas-bbq",
+        "ensaladas"
+      ]
+    },
+    {
+      "slug": "crepes",
+      "name": "Crepes",
+      "image": "/images/products/nutella.webp",
+      "cover": "/images/products/crepes-de-dulce-cover.webp",
+      "categories": [
+        "crepes-de-sal",
+        "crepes-de-dulce"
+      ]
+    },
+    {
+      "slug": "helados",
+      "name": "Helados",
+      "image": "/images/products/mantecado-oreo.webp",
+      "cover": "/images/products/helados-cover.webp",
+      "categories": [
+        "helados",
+        "helados-soft"
+      ]
+    },
+    {
+      "slug": "postres-y-tortas",
+      "name": "Postres y Tortas",
+      "image": "/images/products/tiramisu.webp",
+      "cover": "/images/products/postres-cover.webp",
+      "categories": [
+        "postres",
+        "tortas"
+      ]
+    },
+    {
+      "slug": "bebidas",
+      "name": "Bebidas",
+      "image": "/images/products/limonada-de-frutos-rojos-y-rosas.webp",
+      "cover": "/images/products/bebidas-frias-cover.webp",
+      "categories": [
+        "bebidas-frias"
+      ]
+    },
+    {
+      "slug": "combos",
+      "name": "Combos",
+      "image": "/images/products/combo-cumpleanero.webp",
+      "cover": "/images/products/combos-familiares-cover.webp",
+      "categories": [
+        "combos-familiares"
+      ]
+    }
+  ],
+  "upsell": {
+    "group": "bebidas",
+    "title": "¿Algo para tomar?"
+  },
+  "categories": [
+    {
+      "id": "6eb7a267-840e-4ebb-9dc3-706c385c5858",
+      "slug": "nueva-linea-de-sal",
+      "name": "Nueva Línea de Sal",
+      "label": "Empanadas y tartas",
+      "cover": "/images/products/nueva-linea-de-sal-cover.webp",
+      "items": [
+        {
+          "id": "517fcc9d-7c24-4700-a18a-f73b3e63f1f8",
+          "slug": "empanada-napolitana",
+          "name": "Empanada Napolitana",
+          "description": "Rellena de jamón ahumado, mozarella con salsa de tomate especiada.",
+          "price": 1.8,
+          "image": "/images/products/empanada-napolitana.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "0ddd5755-da2c-4cd8-813f-43afe80e337b",
+          "slug": "empanada-de-carne",
+          "name": "Empanada de carne",
+          "description": "Rellena de carne de res molida, pimentón ahumado, papa, huevo duro, aceitunas verdes, masa artesanal.",
+          "price": 2,
+          "image": "/images/products/empanada-de-carne.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "e8bd7403-a69f-4b7f-9577-1da817f5ad35",
+          "slug": "tarta-de-jamon-y-queso",
+          "name": "Tarta de jamón y queso",
+          "description": "Tarta rellena de jamón, tocino ahumado, crema de leche, huevo, queso mozarella y parmesano",
+          "price": 3.25,
+          "image": "/images/products/tarta-de-jamon-y-queso.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "b2ed3538-fd93-4fb3-ad58-a0be329974eb",
+      "slug": "desayunos",
+      "name": "Desayunos",
+      "label": "Desayunos",
+      "cover": "/images/products/desayunos-cover.webp",
+      "items": [
+        {
+          "id": "21fb5ca9-b1ab-402b-8ae8-7b81ac8320d0",
+          "slug": "desayuno-keto",
+          "name": "Desayuno Keto",
+          "description": "Café, té o chocolate, jugo de frutas, tocino crocante, aguacate, huevo frito, champiñón salteado, salchicha ranchera, lechuga, vinagreta oriental y tomate cherry",
+          "price": 6.3,
+          "image": "/images/products/desayuno-keto.webp",
+          "optionGroups": [
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu bebida caliente",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Café americano",
+                  "price": 0
+                },
+                {
+                  "name": "Café con leche",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Té negro",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b20b190a-6fd8-4181-adbd-987fb53b806e",
+          "slug": "desayuno-costeno",
+          "name": "Desayuno Costeño",
+          "description": "Café, té o chocolate, jugo de frutas, huevo frito, tocino crocante, cebollín y sal prieta sobre una cama de verde majado",
+          "price": 6.4,
+          "image": "/images/products/desayuno-costeno.webp",
+          "optionGroups": [
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu bebida caliente",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Café americano",
+                  "price": 0
+                },
+                {
+                  "name": "Café con leche",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Té negro",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "343de6eb-bd33-4f1e-82bb-7080e898331d",
+          "slug": "ranchero",
+          "name": "Ranchero",
+          "description": "Café, té o chocolate, jugo de frutas, huevos fritos con papas y salchicha ranchera",
+          "price": 6.5,
+          "image": "/images/products/ranchero.webp",
+          "optionGroups": [
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu bebida caliente",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Café americano",
+                  "price": 0
+                },
+                {
+                  "name": "Café con leche",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Té negro",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4500fc58-6951-4dfd-a54b-d7b6faade240",
+          "slug": "de-la-aurora",
+          "name": "De La Aurora",
+          "description": "Café, té o chocolate, jugo de frutas, huevos revueltos acompañados de queso, jamón o tocino; pan, mantequilla y mermelada",
+          "price": 5.7,
+          "image": "/images/products/de-la-aurora.webp",
+          "optionGroups": [
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu bebida caliente",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Café americano",
+                  "price": 0
+                },
+                {
+                  "name": "Café con leche",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Té negro",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Elige el acompañamiento para tus huevos",
+              "required": false,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Tocino",
+                  "price": 0
+                },
+                {
+                  "name": "Queso",
+                  "price": 0
+                },
+                {
+                  "name": "Jamón",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "272cc7d2-33f4-4dd5-b2f3-0b7550f20d7f",
+          "slug": "light",
+          "name": "Light",
+          "description": "Café o té, jugo de frutas, pan integral, ensalada de frutas con granola yogurt y miel",
+          "price": 5.75,
+          "image": "/images/products/light.webp",
+          "optionGroups": [
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu bebida caliente",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Café americano",
+                  "price": 0
+                },
+                {
+                  "name": "Café con leche",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Té negro",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1fdcca7a-a96f-46aa-b7c2-0b20f31bc869",
+          "slug": "criollo",
+          "name": "Criollo",
+          "description": "Café, té o chocolate, jugo de frutas, mote pillo",
+          "price": 5.5,
+          "image": "/images/products/criollo.webp",
+          "optionGroups": [
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu bebida caliente",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Café americano",
+                  "price": 0
+                },
+                {
+                  "name": "Café con leche",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Té negro",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "43a189fe-34db-4dc1-8c33-ab6b4b4aebdd",
+          "slug": "americano",
+          "name": "Americano",
+          "description": "Café, té o chocolate, jugo de frutas, huevos revueltos, pan, mantequilla y mermelada",
+          "price": 5.3,
+          "image": "/images/products/americano.webp",
+          "optionGroups": [
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu bebida caliente",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Café americano",
+                  "price": 0
+                },
+                {
+                  "name": "Café con leche",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Té negro",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "df42e8f4-1e31-4cc6-8ccc-d7f64dd6a435",
+          "slug": "continental",
+          "name": "Continental",
+          "description": "Café, té o chocolate, jugo de frutas, pan, mantequilla y mermelada",
+          "price": 4.5,
+          "image": "/images/products/continental.webp",
+          "optionGroups": [
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu bebida caliente",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Café americano",
+                  "price": 0
+                },
+                {
+                  "name": "Café con leche",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Té negro",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "93c25a05-8455-47bf-8c34-fc70b2eaad30",
+      "slug": "ensaladas",
+      "name": "Ensaladas",
+      "label": "Ensaladas",
+      "cover": "/images/products/ensaladas-cover.webp",
+      "items": [
+        {
+          "id": "c93e17bb-82ce-4137-af6d-1c91ce430571",
+          "slug": "oriental",
+          "name": "Oriental",
+          "description": "Mix de lechugas, pollo, tocino, huevo, gajos de naranja y apio; con nuestra vinagreta oriental (ajonjolí, soya y jengibre)",
+          "price": 4.9,
+          "image": "/images/products/oriental.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "29adf61a-68fc-47fd-bf88-721cd239acf3",
+          "slug": "tex-mex",
+          "name": "Tex Mex",
+          "description": "Mix de lechugas, carne molida, fréjol, maíz dulce, cebollas encurtidas, queso, tomate y mayonesa de aguacate; acompañada de nachos",
+          "price": 4.8,
+          "image": "/images/products/tex-mex.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "585954ed-23fd-4c96-8b5d-45a63a43b5a9",
+      "slug": "sanduches",
+      "name": "Sánduches",
+      "label": "Sánduches",
+      "cover": "/images/products/sanduches-cover.webp",
+      "items": [
+        {
+          "id": "c385dd2f-c054-4602-ac52-51f03c322d8a",
+          "slug": "queso",
+          "name": "Queso",
+          "description": "Pan de molde y queso holandés",
+          "price": 2.8,
+          "image": "/images/products/queso.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e063753d-42e1-4bfa-b19a-f5a5adddbf9e",
+          "slug": "pulled-pork",
+          "name": "Pulled Pork",
+          "description": "Pan de 25cm, costillas de cerdo (8horas de cocción lenta) con nuestra ensalada bbq, ensalada de col con cebollas encurtidas.",
+          "price": 5.5,
+          "image": "/images/products/pulled-pork.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "6a50bde6-663c-4243-af1e-8a537e964fbd",
+          "slug": "mixto",
+          "name": "Mixto",
+          "description": "Pan de molde, jamón y queso holandés",
+          "price": 3.5,
+          "image": "/images/products/mixto.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "36287419-19be-43c9-a660-f3cc324fe50b",
+          "slug": "vegetariano",
+          "name": "Vegetariano",
+          "description": "Pan, queso holandés, champiñones en salsa de oliva y especies, pimientos, tomates, cebollas, especies, aceitunas y pickles",
+          "price": 3.9,
+          "image": "/images/products/vegetariano.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cef2f85c-fb46-4d5e-88a3-efe57de21810",
+          "slug": "campestre",
+          "name": "Campestre",
+          "description": "Pan, pollo, lechuga, mayonesa y mostaza",
+          "price": 4.5,
+          "image": "/images/products/campestre.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "723974c8-782c-450a-a0e3-bea4d7e9bcbc",
+          "slug": "pepe",
+          "name": "Pepe",
+          "description": "Pan, pollo y champiñones salteados, queso holandés, tomate y lechuga",
+          "price": 5,
+          "image": "/images/products/pepe.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3552e8ea-f007-464b-9ef1-f1d389dd289a",
+          "slug": "pollo-cesar",
+          "name": "Pollo César",
+          "description": "Pan de molde, pollo, lechuga, tocino y queso",
+          "price": 5,
+          "image": "/images/products/pollo-cesar.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7bd969e2-592c-4530-b131-87ce9cd18cf7",
+          "slug": "tutto-freddo",
+          "name": "Tutto Freddo",
+          "description": "Pan, jamón, queso holandés, salami, pepperoni, lechuga, tomate, champiñones, mayonesa y mostaza",
+          "price": 5.25,
+          "image": "/images/products/tutto-freddo.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fc71a6e4-0c14-417a-a7ff-0102f97a10c6",
+          "slug": "pavo",
+          "name": "Pavo",
+          "description": "Pan ciabatta, queso, jamón de pavo y champiñones",
+          "price": 6,
+          "image": "/images/products/pavo.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a0b8d652-0978-4523-b62a-ec01e6be79da",
+          "slug": "club",
+          "name": "Club",
+          "description": "Pan de molde, pollo, jamón de pierna, queso holandés, tocino, huevo duro, lechuga y tomate",
+          "price": 5.5,
+          "image": "/images/products/club.webp",
+          "optionGroups": [
+            {
+              "name": "Elige el pan de tu sánduche",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Molde",
+                  "price": 0
+                },
+                {
+                  "name": "Ciabatta",
+                  "price": 0
+                },
+                {
+                  "name": "Francés",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8931ff9a-adda-419e-8481-7e9529abcb87",
+      "slug": "pizza",
+      "name": "Pizza",
+      "label": "Pizza",
+      "cover": "/images/products/pizza-cover.webp",
+      "items": [
+        {
+          "id": "c7cd5aee-d3f0-42c0-a925-4dc5f46164e8",
+          "slug": "jamon",
+          "name": "Jamón",
+          "description": "",
+          "price": 5.3,
+          "image": "/images/products/jamon.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "f82bd28f-7204-41e1-b051-ad3ac4e5897c",
+          "slug": "pippo",
+          "name": "Pippo",
+          "description": "Jamón y champiñones",
+          "price": 6,
+          "image": "/images/products/pippo.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "b52411fe-8c34-47e4-a3d2-bdaa640365fb",
+          "slug": "sorrento",
+          "name": "Sorrento",
+          "description": "Pepperoni",
+          "price": 5.5,
+          "image": "/images/products/sorrento.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "47807705-b77c-4b46-bbb0-3fba23ae176e",
+          "slug": "hawayana",
+          "name": "Hawayana",
+          "description": "Piña en almíbar, choclo dulce y tocino",
+          "price": 6.2,
+          "image": "/images/products/hawayana.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "5f696a55-35e7-4f12-8cf4-2af372a1b4b4",
+          "slug": "4-estaciones",
+          "name": "4 Estaciones",
+          "description": "Pollo, salami, champiñones y jamón",
+          "price": 6.5,
+          "image": "/images/products/4-estaciones.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "da4a3786-cbb8-4302-8370-12e736ec1249",
+          "slug": "cubana",
+          "name": "Cubana",
+          "description": "Pollo, jamón, chorizo y tocino",
+          "price": 6.25,
+          "image": "/images/products/cubana.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "8cb9b6e6-2960-46b0-9d38-acfe7c07d093",
+          "slug": "americana",
+          "name": "Americana",
+          "description": "Jamón, tocino, salami y pepperoni",
+          "price": 6.1,
+          "image": "/images/products/americana.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "06c703b1-fa4d-4749-825c-e6f540be6d54",
+          "slug": "bbq",
+          "name": "BBQ",
+          "description": "Carne, tocino, pollo, cebolla y salsa BBQ",
+          "price": 6.7,
+          "image": "/images/products/bbq.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "43b1cf0e-6491-4dea-b06c-21672bd2f736",
+          "slug": "carbonara",
+          "name": "Carbonara",
+          "description": "Salsa blanca, tocino, pollo y champiñones",
+          "price": 6.5,
+          "image": "/images/products/carbonara.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "15e35c8b-3f22-4b73-be66-025158682954",
+      "slug": "lasana",
+      "name": "Lasaña",
+      "label": "Lasaña",
+      "cover": "/images/products/lasana-cover.webp",
+      "items": [
+        {
+          "id": "39355c3a-06e2-408e-bc59-597cb97af01b",
+          "slug": "lasana-de-carne",
+          "name": "Lasaña de carne",
+          "description": "Acompañada de pan",
+          "price": 6.3,
+          "image": "/images/products/lasana-de-carne.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "52c2f798-7d9c-4c20-9c63-b1710d92e929",
+          "slug": "lasana-de-pollo",
+          "name": "Lasaña de pollo",
+          "description": "Acompañada de pan",
+          "price": 6.3,
+          "image": "/images/products/lasana-de-pollo.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "841a2336-db8c-4c26-aaf6-ba8a613c175d",
+      "slug": "alitas-bbq",
+      "name": "Alitas BBQ",
+      "label": "Alitas BBQ",
+      "cover": "/images/products/alitas-bbq-cover.webp",
+      "items": [
+        {
+          "id": "0ba1513e-437f-49db-8f88-244959bae429",
+          "slug": "alitas",
+          "name": "Alitas",
+          "description": "Acompañadas de papas horneadas a las finas hierbas",
+          "price": 7.25,
+          "image": "/images/products/alitas.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "5bf8dfd4-d45c-4f3e-a14b-2fdcf1e36352",
+      "slug": "crepes-de-sal",
+      "name": "Crepes de sal",
+      "label": "Crepes de sal",
+      "cover": "/images/products/crepes-de-sal-cover.webp",
+      "items": [
+        {
+          "id": "0fbc0144-aff3-46fa-b3db-c9695b4bc144",
+          "slug": "gloria",
+          "name": "Gloria",
+          "description": "Pollo, champiñones, queso y salsa bechamel",
+          "price": 5.2,
+          "image": "/images/products/gloria.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "f54d91dc-d686-4017-b8b6-fcac61978159",
+          "slug": "festin-de-jamon-y-queso",
+          "name": "Festín de jamón y queso",
+          "description": "Jamón, queso mozzarella y huevo frito",
+          "price": 4.8,
+          "image": "/images/products/festin-de-jamon-y-queso.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "ade815c3-7d28-4af3-8615-95719fa7dd63",
+          "slug": "tutto",
+          "name": "Tutto",
+          "description": "Champiñones, salsa roja, queso, vegetales y salchicha",
+          "price": 4.7,
+          "image": "/images/products/tutto.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "76e64d7f-d255-4f43-b81e-68a2456d0952",
+      "slug": "crepes-de-dulce",
+      "name": "Crepes de dulce",
+      "label": "Crepes de dulce",
+      "cover": "/images/products/crepes-de-dulce-cover.webp",
+      "items": [
+        {
+          "id": "4a98de11-e577-44cf-9cb1-8b1f17d951d2",
+          "slug": "nutella",
+          "name": "Nutella",
+          "description": "Nutella, crema, sirope de chocolate y helado de nata.",
+          "price": 5.3,
+          "image": "/images/products/nutella.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "0a23d329-948f-4c96-ac61-80e3f86f3e1d",
+          "slug": "fantasia-de-frutas",
+          "name": "Fantasía de Frutas",
+          "description": "Fresa, banana, sirope de fresa, aderezo brownie y manjar; helado de vainilla",
+          "price": 4.45,
+          "image": "/images/products/fantasia-de-frutas.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "030780ff-bd86-45af-9a93-26ef01616e83",
+          "slug": "tentacion-de-dulce",
+          "name": "Tentación de dulce",
+          "description": "Crema, sirope de chocolate, chispas de chocolate, nueces, salsa casera de avellanas y helado de vainilla",
+          "price": 4.5,
+          "image": "/images/products/tentacion-de-dulce.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "6fc3c5e0-b844-4dad-accc-e19bcbfbe145",
+      "slug": "pancakes",
+      "name": "Pancakes",
+      "label": "Pancakes",
+      "cover": "/images/products/pancakes-cover.webp",
+      "items": [
+        {
+          "id": "62545ac7-cea3-47f7-ae2d-e3788a1dd52a",
+          "slug": "americano-2",
+          "name": "Pancakes Americanos",
+          "description": "Tres pancakes con maple, mantequilla y tocino",
+          "price": 4.9,
+          "image": "/images/products/americano-2.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "846eb379-837a-4cb8-91bc-6b845ecf132a",
+          "slug": "goloso",
+          "name": "Goloso",
+          "description": "Tres pancakes con chispas de chocolate, nueces, crema y topping de chocolate",
+          "price": 4.3,
+          "image": "/images/products/goloso.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "58e1bbc9-935e-43f5-852b-7bf6a258abf7",
+          "slug": "frutal",
+          "name": "Frutal",
+          "description": "Tres pancakes con frutilla, banana, crema y topping de frutilla",
+          "price": 4.5,
+          "image": "/images/products/frutal.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "4ff2c845-7c91-486b-9fa7-75ad2a41bdd6",
+      "slug": "helados",
+      "name": "Helados",
+      "label": "Helado artesanal",
+      "cover": "/images/products/helados-cover.webp",
+      "items": [
+        {
+          "id": "30375ee3-ee0b-4ce4-be0d-8082f11d8c86",
+          "slug": "litro-de-helado",
+          "name": "Litro de helado",
+          "description": "Escoge tu sabor favorito",
+          "price": 9,
+          "image": "/images/products/litro-de-helado.webp",
+          "optionGroups": [
+            {
+              "name": "Sabores de helado",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Vainilla",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Oreo",
+                  "price": 0
+                },
+                {
+                  "name": "Chicle",
+                  "price": 0
+                },
+                {
+                  "name": "Café",
+                  "price": 0
+                },
+                {
+                  "name": "Manjar con nuez",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate con nuez",
+                  "price": 0
+                },
+                {
+                  "name": "Vainilla light",
+                  "price": 0
+                },
+                {
+                  "name": "Mora light",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate light",
+                  "price": 0
+                },
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Mandarina",
+                  "price": 0
+                },
+                {
+                  "name": "Nata",
+                  "price": 0
+                },
+                {
+                  "name": "Straciatella",
+                  "price": 0
+                },
+                {
+                  "name": "Snickers",
+                  "price": 0
+                },
+                {
+                  "name": "Coco",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7f2f400a-efe5-4c13-a2b8-9496caf420bb",
+          "slug": "medio-litro-de-helado",
+          "name": "Medio litro de helado",
+          "description": "Escoge tu sabor favorito",
+          "price": 6.46,
+          "image": "/images/products/medio-litro-de-helado.webp",
+          "optionGroups": [
+            {
+              "name": "Sabores de helado",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Vainilla",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Oreo",
+                  "price": 0
+                },
+                {
+                  "name": "Chicle",
+                  "price": 0
+                },
+                {
+                  "name": "Café",
+                  "price": 0
+                },
+                {
+                  "name": "Manjar con nuez",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate con nuez",
+                  "price": 0
+                },
+                {
+                  "name": "Vainilla light",
+                  "price": 0
+                },
+                {
+                  "name": "Mora light",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate light",
+                  "price": 0
+                },
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Mandarina",
+                  "price": 0
+                },
+                {
+                  "name": "Nata",
+                  "price": 0
+                },
+                {
+                  "name": "Straciatella",
+                  "price": 0
+                },
+                {
+                  "name": "Snickers",
+                  "price": 0
+                },
+                {
+                  "name": "Coco",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "53d00d6d-8679-41ab-bf54-fb144c5f3345",
+      "slug": "helados-soft",
+      "name": "Helados Soft",
+      "label": "Helado soft",
+      "cover": "/images/products/helados-soft-cover.webp",
+      "items": [
+        {
+          "id": "f8d96a40-fe3e-441c-b7c1-44f577bb3449",
+          "slug": "mantecado-brownie",
+          "name": "Mantecado Brownie",
+          "description": "Helado soft vainilla con aderezo brownie y topping de manjar",
+          "price": 3.5,
+          "image": "/images/products/mantecado-brownie.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "9c7a4a79-aa39-4d4e-9e79-4f3468347444",
+          "slug": "mantecado-tango",
+          "name": "Mantecado Tango",
+          "description": "Helado soft vainilla, aderezo de tango y topping de manjar",
+          "price": 3.25,
+          "image": "/images/products/mantecado-tango.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "3bebda7b-5ab3-499e-b3d8-d6fb024a7a82",
+          "slug": "mantecado-oreo",
+          "name": "Mantecado Oreo",
+          "description": "Helado soft de vainilla, aderezo oreo",
+          "price": 3.2,
+          "image": "/images/products/mantecado-oreo.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "5c41be1c-0b30-412b-83cd-a1c4271491c0",
+          "slug": "litro-de-helado-soft",
+          "name": "Litro De Helado Soft",
+          "description": "Delicioso helado de mantecado soft.",
+          "price": 6.1,
+          "image": "/images/products/litro-de-helado-soft.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "1071f9f1-3eb0-4265-844b-93009a32d497",
+      "slug": "postres",
+      "name": "Postres",
+      "label": "Postres",
+      "cover": "/images/products/postres-cover.webp",
+      "items": [
+        {
+          "id": "fa5744cc-38e4-4848-b8f4-028dedec77b1",
+          "slug": "tres-leches",
+          "name": "Tres leches",
+          "description": "Bizcocho de vainilla, hidratado en jarabe tres leches",
+          "price": 3.4,
+          "image": "/images/products/tres-leches.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "65075ff2-a51d-4048-942f-27a72bd4c909",
+          "slug": "nocciola",
+          "name": "Nocciola",
+          "description": "Bizcocho de chocolate hidratado en almíbar de nutella, relleno de crema de avellana con nuez y chocolate",
+          "price": 3.5,
+          "image": "/images/products/nocciola.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "0e0c9d55-111b-473e-b74c-7a1d40a8e97d",
+          "slug": "sacher",
+          "name": "Sacher",
+          "description": "Bizcocho de chocolate, hidratado en almíbar de frutos rojos, relleno de ganache de chocolate y mermelada de mora",
+          "price": 3.5,
+          "image": "/images/products/sacher.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "81ae6203-8fa4-4b15-a72f-728c203cced1",
+          "slug": "selva-negra",
+          "name": "Selva negra",
+          "description": "Bizcocho de chocolate, hidratado en almíbar de frutos rojos, relleno de crema de chocolate con mermelada de frutos rojos.",
+          "price": 3.15,
+          "image": "/images/products/selva-negra.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "284c3ae5-c9a9-4f9f-99b4-61ed90dfc3a0",
+          "slug": "tiramisu",
+          "name": "Tiramisù",
+          "description": "Bizcocho de vainilla, relleno de crema zabaione.",
+          "price": 3.2,
+          "image": "/images/products/tiramisu.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "3184db42-d1f0-44fe-8e4b-69cfb534731a",
+          "slug": "brownie",
+          "name": "Brownie",
+          "description": "Porción de brownie con trozos de nuez",
+          "price": 3,
+          "image": "/images/products/brownie.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "48404e26-b980-463d-b0a1-6afba7b3a2bb",
+          "slug": "tarta-de-manzana-y-nuez",
+          "name": "Tarta de manzana y nuez",
+          "description": "Masa quebrada crocante dulce, rellena de manzana, manjar, nuez y cinco especies",
+          "price": 3.5,
+          "image": "/images/products/tarta-de-manzana-y-nuez.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "fce87c8a-f3a5-473e-9123-246f0673ea1c",
+          "slug": "pie-de-limon",
+          "name": "Pie de Limon",
+          "description": "Galleta dulce crocante, rellena de crema de limón con merengue suizo flameado",
+          "price": 3,
+          "image": "/images/products/pie-de-limon.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "8396f967-fd78-46e3-8527-b895626f2b72",
+          "slug": "galleta-chocochip",
+          "name": "Galleta Chocochip",
+          "description": "Deliciosa galleta de vainilla con chispas de chocolate",
+          "price": 1.5,
+          "image": "/images/products/galleta-chocochip.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "4983513c-676f-48b6-8fd6-1dfebcb577df",
+      "slug": "tortas",
+      "name": "Tortas",
+      "label": "Tortas",
+      "cover": "/images/products/tortas-cover.webp",
+      "items": [
+        {
+          "id": "ebfb8e0c-997a-4c07-9879-4dfaf96cbda3",
+          "slug": "selva-blanca",
+          "name": "Selva blanca",
+          "description": "Bizcocho de vainilla hidratado en almíbar de frutos rojos, relleno de mousse de chocolate blanco, con mermelada de frutos rojos cubierta con crema, hojuelas de chocolate blanco y filigranas de chocolate negro. 16 porciones.",
+          "price": 19.5,
+          "image": "/images/products/selva-blanca.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "d1f5d4b2-d080-49d6-92f6-8df487e01146",
+          "slug": "selva-negra-2",
+          "name": "Torta Selva Negra",
+          "description": "Bizcocho de chocolate hidratado en almíbar de frutos rojos, relleno de crema de chocolate, con mermelada de frutos rojos cubierta con crema, hojuelas de chocolate negro y filigranas de chocolate blanco. 16 porciones.",
+          "price": 19.5,
+          "image": "/images/products/selva-negra-2.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "746b02b2-f94c-480e-8fff-44bed2b6eafa",
+          "slug": "cheesecake-de-maracuya-frio",
+          "name": "Cheesecake de maracuyá frio",
+          "description": "Pastel de queso frío, cama de galletas de coco triturados, salsa de maracuyá artesanal y crema. 10 a 15 porciones.",
+          "price": 27,
+          "image": "/images/products/cheesecake-de-maracuya-frio.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "27df68e0-3dc4-4f49-91fe-c3cf20aac024",
+          "slug": "cheesecake-de-frutos-rojos",
+          "name": "Cheesecake de frutos rojos",
+          "description": "Pastel de queso frío, cama de galletas de brownie, salsa de frutos rojos artesanal, crema y moras. De 8 a10 porciones",
+          "price": 15.5,
+          "image": "/images/products/cheesecake-de-frutos-rojos.webp",
+          "optionGroups": []
+        }
+      ]
+    },
+    {
+      "id": "cd6725f8-8d00-4940-8eef-11c67fdc908e",
+      "slug": "bebidas-frias",
+      "name": "Bebidas Frías",
+      "label": "Bebidas frías",
+      "cover": "/images/products/bebidas-frias-cover.webp",
+      "items": [
+        {
+          "id": "c19585f6-bfa7-4336-8ef5-dcbd65715d25",
+          "slug": "jugos-naturales",
+          "name": "Jugos naturales",
+          "description": "Escoge tu sabor favorito, pulpa 100% natural",
+          "price": 2.25,
+          "image": "/images/products/jugos-naturales.webp",
+          "optionGroups": [
+            {
+              "name": "Elige con o sin azúcar",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Con azúcar",
+                  "price": 0
+                },
+                {
+                  "name": "Sin azúcar",
+                  "price": 0
+                },
+                {
+                  "name": "Con stevia",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Jugo de frutas",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate de árbol",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                },
+                {
+                  "name": "Naranja",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "38b47e43-abcf-4638-a111-7fc0789baf12",
+          "slug": "limonada",
+          "name": "Limonada",
+          "description": "",
+          "price": 2,
+          "image": "/images/products/limonada.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "143010d8-ef99-4d10-82d8-d24cce1fb37a",
+          "slug": "limonada-de-frutos-rojos-y-rosas",
+          "name": "Limonada de frutos rojos y rosas",
+          "description": "",
+          "price": 2.8,
+          "image": "/images/products/limonada-de-frutos-rojos-y-rosas.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a99c468a-7c7b-43cb-bd6e-d4f0e1a9dfc4",
+          "slug": "te-de-frutos-rojos",
+          "name": "Té de frutos rojos",
+          "description": "",
+          "price": 2.25,
+          "image": "/images/products/te-de-frutos-rojos.webp",
+          "optionGroups": []
+        },
+        {
+          "id": "508abd47-cb6e-4640-b1a2-7f469c1f098d",
+          "slug": "te-negro-con-frambuesa",
+          "name": "Té negro con Frambuesa",
+          "description": "",
+          "price": 2.8,
+          "image": "/images/products/te-negro-con-frambuesa.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b4b22c89-3800-4cf4-97de-fcda7916d017",
+          "slug": "te-de-durazno-con-jengibre",
+          "name": "Té de durazno con jengibre",
+          "description": "",
+          "price": 2.8,
+          "image": "/images/products/te-de-durazno-con-jengibre.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "079f3652-2843-4549-a2ba-5fc55bc3ba90",
+          "slug": "palmer-de-durazno",
+          "name": "Palmer de durazno",
+          "description": "",
+          "price": 2.8,
+          "image": "/images/products/palmer-de-durazno.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9267b40f-ea37-43af-880f-1cca9dc41d3d",
+          "slug": "naranja-butterfly",
+          "name": "Naranja Butterfly",
+          "description": "Jugo de naranja y té Butterfly",
+          "price": 2.5,
+          "image": "/images/products/naranja-butterfly.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7b3925fe-7eb2-4dea-ba28-4ebf224423bb",
+          "slug": "naranja-jamaica-berries",
+          "name": "Naranja Jamaica & Berries",
+          "description": "Jugo de naranja y té de Jamaica & Berries",
+          "price": 2.5,
+          "image": "/images/products/naranja-jamaica-berries.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "8a74f3e3-b1e0-4f41-b30d-ebe5621d31c6",
+          "slug": "granizado",
+          "name": "Granizado",
+          "description": "Escoge tu sabor favorito",
+          "price": 2.5,
+          "image": "/images/products/granizado.webp",
+          "optionGroups": [
+            {
+              "name": "Sabor de granizado",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Frutilla",
+                  "price": 0
+                },
+                {
+                  "name": "Mora",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fcf1aa02-fa69-452e-ba0a-f6f88c33fd50",
+          "slug": "batidos-de-fruta",
+          "name": "Batidos de fruta",
+          "description": "Escoge tu sabor favorito",
+          "price": 2.9,
+          "image": "/images/products/batidos-de-fruta.webp",
+          "optionGroups": [
+            {
+              "name": "Elige con o sin azúcar",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Con azúcar",
+                  "price": 0
+                },
+                {
+                  "name": "Sin azúcar",
+                  "price": 0
+                },
+                {
+                  "name": "Con stevia",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Elige tu batido",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Piña",
+                  "price": 0
+                },
+                {
+                  "name": "Tomate",
+                  "price": 0
+                },
+                {
+                  "name": "Naranjilla",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d6d8c4d0-3b75-492a-b163-d5114b6c2120",
+          "slug": "milk-shake",
+          "name": "Milk shake",
+          "description": "Batido de leche con helado artesanal, escoge tu sabor preferido",
+          "price": 4.25,
+          "image": "/images/products/milk-shake.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            },
+            {
+              "name": "Sabores de helado",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Vainilla",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Oreo",
+                  "price": 0
+                },
+                {
+                  "name": "Chicle",
+                  "price": 0
+                },
+                {
+                  "name": "Café",
+                  "price": 0
+                },
+                {
+                  "name": "Manjar con nuez",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate con nuez",
+                  "price": 0
+                },
+                {
+                  "name": "Vainilla light",
+                  "price": 0
+                },
+                {
+                  "name": "Mora light",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate light",
+                  "price": 0
+                },
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Mandarina",
+                  "price": 0
+                },
+                {
+                  "name": "Nata",
+                  "price": 0
+                },
+                {
+                  "name": "Straciatella",
+                  "price": 0
+                },
+                {
+                  "name": "Snickers",
+                  "price": 0
+                },
+                {
+                  "name": "Coco",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d462a8e4-b4dc-4bf1-91aa-061aec253e66",
+          "slug": "latte-frio",
+          "name": "Latte Frío",
+          "description": "Elige tu sabor favorito",
+          "price": 2.6,
+          "image": "/images/products/latte-frio.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            },
+            {
+              "name": "Elige el sabor de tu latte",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Vainilla francesa",
+                  "price": 0
+                },
+                {
+                  "name": "Avellana",
+                  "price": 0
+                },
+                {
+                  "name": "Marshmellow",
+                  "price": 0
+                },
+                {
+                  "name": "Caramelo Salado",
+                  "price": 0
+                },
+                {
+                  "name": "Irish Coffee",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Elige el tipo de leche para tu bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Leche entera",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Añade crema a tu bebida",
+              "required": false,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Crema extra",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "00ac8c31-115a-4c0c-ac22-14522646e49f",
+          "slug": "frozen-capuccino",
+          "name": "Frozen capuccino",
+          "description": "Batido de helado de vainilla y café con leche",
+          "price": 4.3,
+          "image": "/images/products/frozen-capuccino.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4bd16d37-a034-43f5-8b13-8fd3d82e336f",
+          "slug": "frozen-mocaccino",
+          "name": "Frozen Mocaccino",
+          "description": "Batido de helado de chocolate y café con leche",
+          "price": 4.3,
+          "image": "/images/products/frozen-mocaccino.webp",
+          "optionGroups": [
+            {
+              "name": "Tamaño de la bebida",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Pequeño",
+                  "price": 0
+                },
+                {
+                  "name": "Grande",
+                  "price": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2bea18ba-a49f-4b0b-b35b-3cb3c8f8d967",
+          "slug": "gaseosa",
+          "name": "Gaseosa",
+          "description": "",
+          "price": 1.7,
+          "image": "/images/products/gaseosa.webp",
+          "optionGroups": [
+            {
+              "name": "Sabor de la gaseosa",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Coca cola",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "93b47192-6754-42ef-b7ac-d119060ee898",
+          "slug": "agua",
+          "name": "Agua",
+          "description": "",
+          "price": 1,
+          "image": "/images/products/agua.webp",
+          "optionGroups": [
+            {
+              "name": "Agua",
+              "required": false,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Con gas",
+                  "price": 0.25
+                },
+                {
+                  "name": "Sin gas",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "126294bb-c9c0-4993-878f-90abc67259e0",
+      "slug": "combos-familiares",
+      "name": "Combos Familiares",
+      "label": "Combos familiares",
+      "cover": "/images/products/combos-familiares-cover.webp",
+      "items": [
+        {
+          "id": "598391e8-205f-4943-8b91-46b44d9e1870",
+          "slug": "combo-cumpleanero",
+          "name": "Combo cumpleañero",
+          "description": "Torta (16 porciones), litro de helado, 6 conos y velita cumpleañera",
+          "price": 25,
+          "image": "/images/products/combo-cumpleanero.webp",
+          "optionGroups": [
+            {
+              "name": "Sabores de helado",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Vainilla",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate",
+                  "price": 0
+                },
+                {
+                  "name": "Oreo",
+                  "price": 0
+                },
+                {
+                  "name": "Chicle",
+                  "price": 0
+                },
+                {
+                  "name": "Café",
+                  "price": 0
+                },
+                {
+                  "name": "Manjar con nuez",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate con nuez",
+                  "price": 0
+                },
+                {
+                  "name": "Vainilla light",
+                  "price": 0
+                },
+                {
+                  "name": "Mora light",
+                  "price": 0
+                },
+                {
+                  "name": "Chocolate light",
+                  "price": 0
+                },
+                {
+                  "name": "Mora",
+                  "price": 0
+                },
+                {
+                  "name": "Mandarina",
+                  "price": 0
+                },
+                {
+                  "name": "Nata",
+                  "price": 0
+                },
+                {
+                  "name": "Straciatella",
+                  "price": 0
+                },
+                {
+                  "name": "Snickers",
+                  "price": 0
+                },
+                {
+                  "name": "Coco",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Escoge tu torta",
+              "required": true,
+              "selectionType": "single",
+              "options": [
+                {
+                  "name": "Tiramisú",
+                  "price": 0
+                },
+                {
+                  "name": "Selva negra",
+                  "price": 0
+                },
+                {
+                  "name": "Selva blanca",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

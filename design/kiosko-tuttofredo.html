@@ -1,0 +1,1075 @@
+<title>Kiosko TuttoFredo</title>
+
+<style>
+  @font-face {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('fonts/poppins-600.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url('fonts/poppins-700.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Manrope';
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+    src: url('fonts/manrope-var.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-weight: 500 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('fonts/jetbrainsmono-var.woff2') format('woff2');
+  }
+
+  :root {
+    --page-bg: #faf1e6;
+    --page-bg-2: #f2e4d2;
+    --ink: #2b1b12;
+    --ink-muted: rgba(43, 27, 18, 0.62);
+    --ink-faint: rgba(43, 27, 18, 0.38);
+    --line: rgba(43, 27, 18, 0.14);
+    --brand: #fe742a;
+    --brand-strong: #d85614;
+    --plum: #5b2a55;
+    --success: #2f9e58;
+    --card-bg: #fffdf9;
+    --shadow: 0 20px 40px -24px rgba(43, 27, 18, 0.35);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --page-bg: #1c130d;
+      --page-bg-2: #241a12;
+      --ink: #f5e9dc;
+      --ink-muted: rgba(245, 233, 220, 0.64);
+      --ink-faint: rgba(245, 233, 220, 0.4);
+      --line: rgba(245, 233, 220, 0.14);
+      --brand: #ff8a4c;
+      --brand-strong: #ffab7a;
+      --plum: #c084b8;
+      --success: #4cc983;
+      --card-bg: #2a1d14;
+      --shadow: 0 20px 44px -22px rgba(0, 0, 0, 0.6);
+    }
+  }
+  :root[data-theme='dark'] {
+    --page-bg: #1c130d;
+    --page-bg-2: #241a12;
+    --ink: #f5e9dc;
+    --ink-muted: rgba(245, 233, 220, 0.64);
+    --ink-faint: rgba(245, 233, 220, 0.4);
+    --line: rgba(245, 233, 220, 0.14);
+    --brand: #ff8a4c;
+    --brand-strong: #ffab7a;
+    --plum: #c084b8;
+    --success: #4cc983;
+    --card-bg: #2a1d14;
+    --shadow: 0 20px 44px -22px rgba(0, 0, 0, 0.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-tap-highlight-color: transparent; }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: 'Poppins', system-ui, sans-serif; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 48px);
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-strong);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: clamp(56px, 9vw, 96px) 0 clamp(40px, 6vw, 64px);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(24px, 5vw, 56px);
+    align-items: end;
+  }
+  .hero h1 {
+    font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-top: 14px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--brand);
+  }
+  .hero-sub {
+    margin-top: 18px;
+    max-width: 56ch;
+    color: var(--ink-muted);
+    font-size: 1.05rem;
+  }
+  .stat-rail {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-left: 1px solid var(--line);
+    padding-left: clamp(20px, 3vw, 32px);
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat b {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.9rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat span { font-size: 0.85rem; color: var(--ink-muted); }
+
+  /* ---------- FLOW DIAGRAM ---------- */
+  .flow-section { padding: clamp(48px, 8vw, 72px) 0; border-bottom: 1px solid var(--line); }
+  .flow-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; max-width: 40ch; }
+  .flow-figure { margin: 32px 0 0; }
+  .flow-scroll { overflow-x: auto; padding-bottom: 8px; }
+  .flow-figure svg { display: block; min-width: 760px; width: 100%; height: auto; color: var(--ink); }
+  .flow-figure figcaption {
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    max-width: 68ch;
+  }
+  .flow-figure figcaption b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- PROTOTYPE SECTION ---------- */
+  .proto-section { padding: clamp(48px, 8vw, 80px) 0 clamp(64px, 10vw, 96px); }
+  .proto-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .proto-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; }
+  .proto-head p { color: var(--ink-muted); max-width: 46ch; margin-top: 8px; }
+
+  .proto-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: clamp(24px, 4vw, 48px);
+    align-items: start;
+  }
+
+  .stepper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .stepper .count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    margin-right: 4px;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--line);
+    transition: background 0.25s, transform 0.25s;
+  }
+  .dot.active { background: var(--brand); transform: scale(1.35); }
+  .dot.done { background: var(--brand-strong); opacity: 0.55; }
+
+  .device {
+    position: relative;
+    width: min(390px, 100%);
+    margin: 0 auto;
+    background: #0f0a07;
+    border-radius: 44px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+  }
+  .device::before {
+    content: '';
+    position: absolute;
+    top: 14px; left: 50%; transform: translateX(-50%);
+    width: 90px; height: 6px; border-radius: 4px;
+    background: rgba(255,255,255,0.18);
+  }
+  .screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 17.5;
+    background: #fbf1e4;
+    border-radius: 30px;
+    overflow: hidden;
+    font-family: 'Manrope', sans-serif;
+    color: #2b1b12;
+  }
+  .screen * { box-sizing: border-box; }
+
+  .view {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.32s ease, transform 0.32s ease;
+  }
+  .view.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+  .proto-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .ctrl-btn {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--card-bg);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .ctrl-btn:disabled { opacity: 0.35; cursor: default; }
+  .ctrl-btn.primary { background: var(--brand); border-color: var(--brand); color: #2b1206; }
+
+  .side-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 22px;
+  }
+  .side-panel h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+  .side-panel ol { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; }
+  .side-panel li { font-size: 0.88rem; color: var(--ink-muted); }
+  .side-panel li.now { color: var(--ink); font-weight: 600; }
+  .side-panel li .tag {
+    display: inline-block;
+    margin-left: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 1px 6px;
+    border-radius: 6px;
+    background: var(--page-bg-2);
+    color: var(--ink-muted);
+  }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0 56px; }
+  footer p { color: var(--ink-muted); font-size: 0.92rem; max-width: 60ch; }
+  footer b { color: var(--ink); }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .stat-rail { flex-direction: row; border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 20px; flex-wrap: wrap; }
+    .proto-stage { grid-template-columns: 1fr; }
+    .side-panel { order: -1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+
+  /* ===================== KIOSK SCREEN UI (fixed light "hardware" world) ===================== */
+  .k-idle {
+    background: linear-gradient(180deg, rgba(20,12,6,0.15), rgba(15,9,5,0.78)), center/cover no-repeat url('images/brand/cover.webp');
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 32px 20px 48px;
+  }
+  .k-idle img.logo { width: 76px; height: 76px; border-radius: 20px; margin-bottom: 16px; box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
+  .k-idle h4 { font-family: 'Poppins'; font-weight: 700; font-size: 1.3rem; margin: 0; }
+  .k-idle .cta {
+    margin-top: 18px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    background: #fe742a;
+    color: #2b1206;
+    font-weight: 700;
+    font-size: 0.9rem;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.055); } }
+
+  .k-topbar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 16px 16px 10px;
+    flex-shrink: 0;
+  }
+  .k-topbar img { width: 34px; height: 34px; border-radius: 10px; }
+  .k-topbar b { font-family: 'Poppins'; font-size: 0.95rem; }
+  .k-topbar span { display: block; font-size: 0.68rem; color: #8a6a55; }
+
+  .k-pills { display: flex; gap: 8px; overflow-x: auto; padding: 6px 16px 14px; flex-shrink: 0; }
+  .k-pill {
+    flex-shrink: 0;
+    font-size: 0.74rem; font-weight: 600;
+    padding: 8px 14px; border-radius: 999px;
+    border: 1px solid #e9d9c4; background: #fff;
+    color: #6b4a33; cursor: pointer; white-space: nowrap;
+  }
+  .k-pill.active { background: #fe742a; border-color: #fe742a; color: #2b1206; }
+
+  .k-grid {
+    flex: 1; overflow-y: auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; padding: 0 16px 90px;
+  }
+  .k-card {
+    background: #fff; border-radius: 16px; overflow: hidden;
+    border: 1px solid #f0e2cd; cursor: pointer;
+    display: flex; flex-direction: column;
+  }
+  .k-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+  .k-card .body { padding: 8px 9px 10px; display: flex; flex-direction: column; gap: 3px; flex: 1; }
+  .k-card .name { font-size: 0.76rem; font-weight: 700; line-height: 1.2; }
+  .k-card .desc { font-size: 0.64rem; color: #8a6a55; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+  .k-card .row { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+  .k-card .price { font-family: 'JetBrains Mono'; font-size: 0.78rem; font-weight: 600; }
+  .k-card .add {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #fe742a; color: #2b1206; border: none;
+    font-weight: 800; font-size: 0.9rem; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .k-cartbar {
+    position: absolute; left: 12px; right: 12px; bottom: 14px;
+    background: #2b1206; color: #fbf1e4;
+    border-radius: 16px; padding: 12px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.28);
+    transform: translateY(120%); transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .k-cartbar.show { transform: translateY(0); }
+  .k-cartbar .count { background: #fe742a; color: #2b1206; font-weight: 800; font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; margin-right: 8px; }
+  .k-cartbar b { font-family: 'JetBrains Mono'; }
+
+  .k-toast {
+    position: absolute; top: 66px; left: 50%; transform: translate(-50%, -12px);
+    background: #2f9e58; color: #fff; font-size: 0.72rem; font-weight: 700;
+    padding: 8px 14px; border-radius: 999px; opacity: 0;
+    transition: opacity 0.25s, transform 0.25s; pointer-events: none;
+    white-space: nowrap;
+  }
+  .k-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  .k-sheet-backdrop {
+    position: absolute; inset: 0; background: rgba(20,12,6,0.5);
+    opacity: 0; pointer-events: none; transition: opacity 0.25s;
+  }
+  .k-sheet-backdrop.show { opacity: 1; pointer-events: auto; }
+  .k-sheet {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: #fff; border-radius: 22px 22px 0 0;
+    max-height: 82%; display: flex; flex-direction: column;
+    transform: translateY(100%); transition: transform 0.32s cubic-bezier(.2,.9,.3,1);
+  }
+  .k-sheet.show { transform: translateY(0); }
+  .k-sheet img.hero-img { width: 100%; height: 128px; object-fit: cover; flex-shrink: 0; }
+  .k-sheet-body { padding: 14px 18px; overflow-y: auto; }
+  .k-sheet-body h4 { font-family: 'Poppins'; font-size: 1.02rem; margin: 0 0 4px; }
+  .k-sheet-body .desc { font-size: 0.76rem; color: #8a6a55; margin-bottom: 12px; }
+  .opt-group { margin-bottom: 14px; }
+  .opt-group .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #2b1206; margin-bottom: 6px; display: flex; gap: 6px; align-items: center; }
+  .opt-group .label .req { font-size: 0.58rem; background: #fde3d3; color: #b6540f; padding: 1px 6px; border-radius: 6px; font-weight: 700; }
+  .opt-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; font-size: 0.8rem; border-bottom: 1px solid #f2e6d6; cursor: pointer; }
+  .opt-row .radio { width: 17px; height: 17px; border-radius: 50%; border: 2px solid #d9c3a9; flex-shrink: 0; position: relative; }
+  .opt-row.checked .radio { border-color: #fe742a; }
+  .opt-row.checked .radio::after { content: ''; position: absolute; inset: 2.5px; border-radius: 50%; background: #fe742a; }
+  .qty-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+  .qty-ctrl { display: flex; align-items: center; gap: 14px; }
+  .qty-btn { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #d9c3a9; background: #fff; font-weight: 700; font-size: 1rem; }
+  .k-sheet-footer { padding: 12px 18px 18px; border-top: 1px solid #f2e6d6; flex-shrink: 0; }
+  .k-add-btn { width: 100%; padding: 13px; border-radius: 14px; border: none; background: #fe742a; color: #2b1206; font-weight: 700; font-size: 0.88rem; }
+  .k-add-btn:disabled { background: #f0d9c4; color: #b39d86; }
+
+  .k-cart-view { padding: 16px 16px 0; display: flex; flex-direction: column; height: 100%; }
+  .k-cart-view h4 { font-family: 'Poppins'; margin: 0 0 12px; }
+  .k-line { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f2e6d6; align-items: center; }
+  .k-line img { width: 46px; height: 46px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+  .k-line .meta { flex: 1; min-width: 0; }
+  .k-line .meta .n { font-size: 0.8rem; font-weight: 700; }
+  .k-line .meta .o { font-size: 0.65rem; color: #8a6a55; }
+  .k-line .p { font-family: 'JetBrains Mono'; font-size: 0.78rem; font-weight: 600; }
+  .k-cart-lines { flex: 1; overflow-y: auto; }
+  .k-cart-summary { padding: 12px 0 16px; border-top: 1px solid #f2e6d6; margin-top: auto; }
+  .k-row-sb { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; }
+  .k-row-sb.total { font-weight: 800; font-size: 1rem; margin-top: 6px; }
+  .k-btn { display: block; width: 100%; text-align: center; padding: 13px; border-radius: 14px; font-weight: 700; font-size: 0.85rem; border: none; margin-top: 8px; }
+  .k-btn.solid { background: #fe742a; color: #2b1206; }
+  .k-btn.ghost { background: transparent; color: #6b4a33; border: 1px solid #e9d9c4; }
+
+  .k-pay-method { padding: 22px 18px; display: flex; flex-direction: column; gap: 16px; height: 100%; }
+  .k-pay-method .total-badge { text-align: center; margin-bottom: 4px; }
+  .k-pay-method .total-badge span { display: block; font-size: 0.7rem; color: #8a6a55; }
+  .k-pay-method .total-badge b { font-family: 'JetBrains Mono'; font-size: 1.7rem; }
+  .k-pay-option {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px; border-radius: 16px; border: 2px solid #f0e2cd; background: #fff; cursor: pointer;
+  }
+  .k-pay-option .ic { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+  .k-pay-option.card .ic { background: #fde3d3; }
+  .k-pay-option.qr .ic { background: #ecdff0; }
+  .k-pay-option b { font-size: 0.86rem; display: block; }
+  .k-pay-option span { font-size: 0.68rem; color: #8a6a55; }
+
+  .k-processing { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 24px; text-align: center; }
+  .k-processing .icon-wrap { width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; }
+  .k-processing.card .icon-wrap { background: #fde3d3; animation: tap 1.4s ease-in-out infinite; }
+  @keyframes tap { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1) rotate(-4deg)} }
+  .k-processing h4 { font-family: 'Poppins'; font-size: 1rem; margin: 0; }
+  .k-processing p { font-size: 0.76rem; color: #8a6a55; margin: 0; }
+  .spinner { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #f0e2cd; border-top-color: #fe742a; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .k-qr-view { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 20px 18px; gap: 14px; text-align: center; }
+  .k-qr-view h4 { margin: 0; }
+  .k-qr-view p { margin: 0; }
+  .k-qr-box { padding: 12px; background: #fff; border-radius: 16px; border: 1px solid #f0e2cd; position: relative; }
+  .k-qr-box svg { display: block; }
+  .k-qr-pulse { position: absolute; inset: -6px; border-radius: 20px; border: 2px solid #5b2a55; opacity: 0; animation: qrpulse 1.8s ease-out infinite; }
+  @keyframes qrpulse { 0% { opacity: 0.5; transform: scale(0.98); } 100% { opacity: 0; transform: scale(1.06); } }
+  .k-qr-view .waiting { font-size: 0.72rem; color: #5b2a55; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+  .waiting-dot { width: 6px; height: 6px; border-radius: 50%; background: #5b2a55; animation: blink 1.2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:.25} 50%{opacity:1} }
+  .k-demo-box {
+    margin-top: auto; width: 100%; border: 1.5px dashed #c9b59c; border-radius: 14px;
+    padding: 12px; background: #fbf6ee;
+  }
+  .k-demo-box .demo-tag { font-family: 'JetBrains Mono'; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; color: #a8916f; margin-bottom: 6px; display: block; }
+  .k-demo-box button { width: 100%; padding: 11px; border-radius: 10px; border: none; background: #5b2a55; color: #fff; font-weight: 700; font-size: 0.76rem; }
+
+  .k-confirm { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; text-align: center; }
+  .check-circle { width: 78px; height: 78px; border-radius: 50%; background: #eaf6ee; display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+  .check-circle svg { width: 38px; height: 38px; }
+  .check-circle path { stroke: #2f9e58; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw 0.5s ease forwards 0.15s; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .k-confirm h4 { font-family: 'Poppins'; font-size: 1.15rem; margin: 0; }
+  .k-confirm .order-num { font-family: 'JetBrains Mono'; font-size: 2.1rem; font-weight: 700; color: #fe742a; margin: 2px 0; }
+  .k-confirm p.hint { font-size: 0.78rem; color: #8a6a55; max-width: 26ch; margin: 0; }
+  .k-confirm .mini-summary { font-size: 0.7rem; color: #6b4a33; margin-top: 8px; }
+  .k-confirm-progress { width: 80%; height: 4px; border-radius: 4px; background: #f0e2cd; margin-top: 16px; overflow: hidden; }
+  .k-confirm-progress i { display: block; height: 100%; background: #fe742a; width: 100%; transform-origin: left; }
+  .k-confirm-progress i.run { animation: countdown 8s linear forwards; }
+  @keyframes countdown { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+  .k-confirm button.new-order { margin-top: 14px; font-size: 0.74rem; font-weight: 700; color: #5b2a55; background: none; border: none; text-decoration: underline; cursor: pointer; }
+</style>
+
+<div class="wrap hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Diseño de flujo · Kiosko de autopedido</span>
+      <h1>De elegir a pagar en <em>siete pantallas.</em></h1>
+      <p class="hero-sub">Prototipo clickeable del kiosko para Tutto Freddo — con las categorías, productos y fotos reales de su menú. Recorré la navegación completa antes de que construyamos la app.</p>
+    </div>
+    <div class="stat-rail">
+      <div class="stat"><b>16</b><span>categorías reales del menú</span></div>
+      <div class="stat"><b>81</b><span>productos con foto y precio</span></div>
+      <div class="stat"><b>2</b><span>formas de pago: tarjeta o QR</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap flow-section">
+  <span class="eyebrow">El recorrido</span>
+  <h2 style="margin-top:10px">Siete pantallas, con una bifurcación en el pago</h2>
+  <figure class="flow-figure">
+    <div class="flow-scroll">
+      <svg viewBox="0 0 1180 300" role="img" aria-label="Diagrama de flujo: 1 Inicio, 2 Menú, 3 Personalizar (opcional), 4 Carrito, 5 Método de pago, que se bifurca en 6a Tarjeta o 6b Código QR, y converge en 7 Confirmación.">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+          </marker>
+        </defs>
+
+        <line x1="70" y1="70" x2="190" y2="70" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)" />
+        <line x1="250" y1="70" x2="370" y2="70" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#arrow)" />
+        <line x1="430" y1="70" x2="550" y2="70" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)" />
+        <line x1="610" y1="70" x2="730" y2="70" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)" />
+
+        <path d="M 790 70 C 850 70, 850 40, 900 40" stroke="var(--brand)" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+        <path d="M 790 70 C 850 70, 850 100, 900 100" stroke="var(--plum)" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+        <path d="M 960 40 C 1010 40, 1010 70, 1050 70" stroke="var(--brand)" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+        <path d="M 960 100 C 1010 100, 1010 70, 1050 70" stroke="var(--plum)" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+
+        <text x="310" y="60" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">si tiene opciones</text>
+        <text x="670" y="60" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">revisa y confirma</text>
+        <text x="930" y="20" text-anchor="middle" font-size="11" fill="var(--brand)">paga con tarjeta</text>
+        <text x="930" y="132" text-anchor="middle" font-size="11" fill="var(--plum)">paga con QR</text>
+
+        <g>
+          <circle cx="40" cy="70" r="30" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <text x="40" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="600" fill="currentColor">1</text>
+          <text x="40" y="122" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Inicio</text>
+        </g>
+        <g>
+          <circle cx="220" cy="70" r="30" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <text x="220" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="600" fill="currentColor">2</text>
+          <text x="220" y="122" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Menú</text>
+        </g>
+        <g>
+          <circle cx="400" cy="70" r="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" />
+          <text x="400" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="600" fill="currentColor">3</text>
+          <text x="400" y="122" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Personalizar</text>
+          <text x="400" y="138" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">opcional</text>
+        </g>
+        <g>
+          <circle cx="580" cy="70" r="30" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <text x="580" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="600" fill="currentColor">4</text>
+          <text x="580" y="122" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Carrito</text>
+        </g>
+        <g>
+          <circle cx="760" cy="70" r="30" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <text x="760" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="600" fill="currentColor">5</text>
+          <text x="760" y="122" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Método de pago</text>
+        </g>
+        <g>
+          <circle cx="930" cy="40" r="26" fill="none" stroke="var(--brand)" stroke-width="1.5" />
+          <text x="930" y="45" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="var(--brand)">6a</text>
+        </g>
+        <g>
+          <circle cx="930" cy="100" r="26" fill="none" stroke="var(--plum)" stroke-width="1.5" />
+          <text x="930" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="var(--plum)">6b</text>
+        </g>
+        <text x="930" y="160" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Pago</text>
+
+        <g>
+          <circle cx="1110" cy="70" r="30" fill="none" stroke="currentColor" stroke-width="2" />
+          <text x="1110" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="600" fill="currentColor">7</text>
+          <text x="1110" y="122" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Confirmación</text>
+        </g>
+
+        <text x="40" y="220" font-size="11.5" fill="currentColor" opacity="0.7">Camino más corto (producto sin opciones): </text>
+        <text x="40" y="238" font-family="JetBrains Mono" font-size="11.5" fill="currentColor" font-weight="600">Inicio → Menú → Carrito → Método de pago → Pago → Confirmación</text>
+        <text x="40" y="264" font-size="11.5" fill="currentColor" opacity="0.7">Camino completo (producto con opciones, ej. desayunos): </text>
+        <text x="40" y="282" font-family="JetBrains Mono" font-size="11.5" fill="currentColor" font-weight="600">Inicio → Menú → Personalizar → Carrito → Método de pago → Pago → Confirmación</text>
+      </svg>
+    </div>
+    <figcaption>El kiosko siempre resuelve un pedido en <b>6 o 7 pasos</b> según si el producto necesita personalización (como elegir el jugo o la bebida caliente de un desayuno). El paso 6 es una bifurcación real: <b style="color:var(--brand)">tarjeta</b> queda simulada con animación de cobro, y <b style="color:var(--plum)">QR</b> muestra un código que en el demo se aprueba a mano desde el celular — sin backend real todavía.</figcaption>
+  </figure>
+</div>
+
+<div class="wrap proto-section">
+  <div class="proto-head">
+    <div>
+      <span class="eyebrow">Prototipo clickeable</span>
+      <h2 style="margin-top:10px">Probá el kiosko vos mismo</h2>
+      <p>Tocá dentro de la pantalla para navegar, igual que en el equipo real. Los productos, precios y fotos son los del menú de Tutto Freddo Challuabamba.</p>
+    </div>
+  </div>
+
+  <div class="proto-stage">
+    <div>
+      <div class="stepper">
+        <span class="count">PASO <span id="stepLabel">1</span> / 7</span>
+        <div class="dot" data-step="1"></div>
+        <div class="dot" data-step="2"></div>
+        <div class="dot" data-step="3"></div>
+        <div class="dot" data-step="4"></div>
+        <div class="dot" data-step="5"></div>
+        <div class="dot" data-step="6"></div>
+        <div class="dot" data-step="7"></div>
+      </div>
+
+      <div class="device">
+        <div class="screen" id="screen">
+
+          <div class="view active" data-view="idle">
+            <div class="k-idle" style="flex:1;display:flex;flex-direction:column;" id="idleTap">
+              <img class="logo" src="images/brand/logo.webp" alt="Logo Tutto Freddo" />
+              <h4>Tutto Freddo</h4>
+              <div class="cta">Toca para ordenar</div>
+            </div>
+          </div>
+
+          <div class="view" data-view="menu">
+            <div class="k-topbar">
+              <img src="images/brand/logo.webp" alt="" />
+              <div>
+                <b>Tutto Freddo</b>
+                <span>Challuabamba</span>
+              </div>
+            </div>
+            <div class="k-pills" id="pills"></div>
+            <div class="k-grid" id="grid"></div>
+            <div class="k-toast" id="toast"></div>
+            <div class="k-cartbar" id="cartbar">
+              <span><span class="count" id="cartCount">0</span>en tu pedido</span>
+              <b id="cartTotal">$0.00</b>
+            </div>
+
+            <div class="k-sheet-backdrop" id="sheetBackdrop"></div>
+            <div class="k-sheet" id="sheet">
+              <img class="hero-img" id="sheetImg" src="" alt="" />
+              <div class="k-sheet-body">
+                <h4 id="sheetName"></h4>
+                <p class="desc" id="sheetDesc"></p>
+                <div id="sheetOptions"></div>
+                <div class="qty-row">
+                  <b style="font-size:0.8rem">Cantidad</b>
+                  <div class="qty-ctrl">
+                    <button class="qty-btn" id="qtyMinus">–</button>
+                    <span id="qtyVal" style="font-family:'JetBrains Mono';font-weight:600">1</span>
+                    <button class="qty-btn" id="qtyPlus">+</button>
+                  </div>
+                </div>
+              </div>
+              <div class="k-sheet-footer">
+                <button class="k-add-btn" id="addBtn">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="view" data-view="cart">
+            <div class="k-cart-view">
+              <h4>Tu pedido</h4>
+              <div class="k-cart-lines" id="cartLines"></div>
+              <div class="k-cart-summary">
+                <div class="k-row-sb"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+                <div class="k-row-sb total"><span>Total</span><span id="cartTotal2">$0.00</span></div>
+                <button class="k-btn solid" id="goPayBtn">Ir a pagar</button>
+                <button class="k-btn ghost" id="backMenuBtn">Seguir pidiendo</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="view" data-view="paymethod">
+            <div class="k-pay-method">
+              <div class="total-badge"><span>Total a pagar</span><b id="payTotal">$0.00</b></div>
+              <div class="k-pay-option card" id="chooseCard">
+                <div class="ic">💳</div>
+                <div><b>Tarjeta de crédito/débito</b><span>Visa, Mastercard, Diners</span></div>
+              </div>
+              <div class="k-pay-option qr" id="chooseQr">
+                <div class="ic">▦</div>
+                <div><b>Código QR</b><span>Deuna o tu app bancaria</span></div>
+              </div>
+              <button class="k-btn ghost" id="backCartBtn" style="margin-top:auto">Volver al pedido</button>
+            </div>
+          </div>
+
+          <div class="view" data-view="paycard">
+            <div class="k-processing card">
+              <div class="icon-wrap">💳</div>
+              <h4 id="cardStatusTitle">Inserte o acerque su tarjeta</h4>
+              <p>No retire el equipo hasta confirmar el pago.</p>
+              <div class="spinner" id="cardSpinner" style="display:none"></div>
+            </div>
+          </div>
+
+          <div class="view" data-view="payqr">
+            <div class="k-qr-view">
+              <h4 style="font-family:'Poppins'">Escanea para pagar</h4>
+              <p style="font-size:0.76rem;color:#8a6a55">Usa la app de tu banco o Deuna · <b id="qrTotal">$0.00</b></p>
+              <div class="k-qr-box">
+                <div class="k-qr-pulse"></div>
+                <svg id="qrSvg" width="150" height="150"></svg>
+              </div>
+              <div class="waiting"><span class="waiting-dot"></span>Esperando confirmación de pago…</div>
+              <div class="k-demo-box">
+                <span class="demo-tag">MODO DEMO</span>
+                <button id="simulateQrPay">Simular pago aprobado desde el celular</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="view" data-view="confirm">
+            <div class="k-confirm">
+              <div class="check-circle">
+                <svg viewBox="0 0 24 24"><path d="M4 12.5 L9.5 18 L20 6" /></svg>
+              </div>
+              <h4>¡Pedido confirmado!</h4>
+              <div class="order-num" id="orderNum">#000</div>
+              <p class="hint">Retira tu pedido en caja con este número.</p>
+              <div class="mini-summary" id="confirmSummary"></div>
+              <div class="k-confirm-progress"><i id="confirmBar"></i></div>
+              <button class="new-order" id="newOrderBtn">Nuevo pedido ahora</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="proto-controls">
+        <button class="ctrl-btn" id="prevBtn">← Atrás</button>
+        <button class="ctrl-btn primary" id="restartBtn">Reiniciar demo</button>
+      </div>
+    </div>
+
+    <aside class="side-panel">
+      <h3>Dónde estás</h3>
+      <ol id="sideSteps"></ol>
+    </aside>
+  </div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <p><b>Siguiente paso:</b> si este flujo y esta interfaz te convencen, lo construimos como app real (React + estas mismas 99 fotos del catálogo) corriendo en un servidor local, sin gastar nada. El QR y la validación de pago quedan simulados hasta que definamos la integración con Datafast/Deuna.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var ITEMS = [
+    { id: 'empanada', name: 'Empanada Napolitana', price: 1.80, img: 'images/products/empanada-napolitana.webp', cat: 'Nueva Línea de Sal', desc: 'Rellena de jamón ahumado, mozzarella y salsa de tomate especiada.', options: null },
+    { id: 'hawayana', name: 'Hawayana', price: 6.20, img: 'images/products/hawayana.webp', cat: 'Pizza', desc: 'Pizza artesanal con jamón y piña sobre masa horneada al momento.', options: null },
+    { id: 'mantecado', name: 'Mantecado Oreo', price: 3.20, img: 'images/products/mantecado-oreo.webp', cat: 'Helados Soft', desc: 'Helado soft de vainilla con aderezo Oreo.', options: null },
+    { id: 'selva', name: 'Selva Blanca', price: 19.50, img: 'images/products/selva-blanca.webp', cat: 'Tortas', desc: 'Bizcocho de vainilla, mousse de chocolate blanco y frutos rojos. 16 porciones.', options: null },
+    { id: 'limonada', name: 'Limonada Frutos Rojos', price: 2.80, img: 'images/products/limonada-de-frutos-rojos-y-rosas.webp', cat: 'Bebidas Frías', desc: 'Limonada con frutos rojos y un toque floral de rosas.', options: null },
+    {
+      id: 'light', name: 'Desayuno Light', price: 5.75, img: 'images/products/light.webp', cat: 'Desayunos',
+      desc: 'Café o té, jugo de frutas, pan integral, ensalada de frutas con granola, yogurt y miel.',
+      options: [
+        { name: 'Jugo de frutas', required: true, choices: ['Mora', 'Tomate de árbol', 'Piña', 'Naranjilla', 'Naranja'] },
+        { name: 'Escoge tu bebida caliente', required: true, choices: ['Café americano', 'Café con leche', 'Chocolate', 'Té negro'] }
+      ]
+    }
+  ];
+  var CATS = ['Todos', 'Nueva Línea de Sal', 'Desayunos', 'Pizza', 'Helados Soft', 'Tortas', 'Bebidas Frías'];
+
+  var STEP_OF_VIEW = { idle: 1, menu: 2, sheet: 3, cart: 4, paymethod: 5, paycard: 6, payqr: 6, confirm: 7 };
+  var SIDE_STEPS = [
+    { n: 1, label: 'Inicio', view: 'idle' },
+    { n: 2, label: 'Menú', view: 'menu' },
+    { n: 3, label: 'Personalizar (si aplica)', view: 'sheet' },
+    { n: 4, label: 'Carrito', view: 'cart' },
+    { n: 5, label: 'Método de pago', view: 'paymethod' },
+    { n: 6, label: 'Pago (tarjeta o QR)', view: ['paycard', 'payqr'] },
+    { n: 7, label: 'Confirmación', view: 'confirm' }
+  ];
+
+  var state = { view: 'idle', activeCat: 'Todos', cart: [], selectedOptions: {}, qty: 1, currentItem: null, history: ['idle'] };
+
+  function fmt(n) { return '$' + n.toFixed(2); }
+  function $(id) { return document.getElementById(id); }
+  function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function goto(view, opts) {
+    opts = opts || {};
+    var views = document.querySelectorAll('.view');
+    for (var i = 0; i < views.length; i++) views[i].classList.remove('active');
+    document.querySelector('.view[data-view="' + view + '"]').classList.add('active');
+    if (!opts.silent) state.history.push(view);
+    state.view = view;
+    renderStepper();
+  }
+
+  function back() {
+    if (state.history.length > 1) {
+      state.history.pop();
+      var prev = state.history[state.history.length - 1];
+      goto(prev, { silent: true });
+    }
+  }
+
+  function renderStepper() {
+    var step = STEP_OF_VIEW[state.view] || 1;
+    $('stepLabel').textContent = step;
+    var dots = document.querySelectorAll('.dot');
+    for (var i = 0; i < dots.length; i++) {
+      var n = parseInt(dots[i].getAttribute('data-step'), 10);
+      dots[i].classList.toggle('active', n === step);
+      dots[i].classList.toggle('done', n < step);
+    }
+    var ol = $('sideSteps');
+    clear(ol);
+    SIDE_STEPS.forEach(function (s) {
+      var isNow = Array.isArray(s.view) ? s.view.indexOf(state.view) !== -1 : s.view === state.view;
+      var li = el('li', isNow ? 'now' : '', s.label);
+      if (isNow) li.appendChild(el('span', 'tag', 'ahora'));
+      ol.appendChild(li);
+    });
+  }
+
+  function renderPills() {
+    var wrap = $('pills');
+    clear(wrap);
+    CATS.forEach(function (c) {
+      var b = el('button', 'k-pill' + (c === state.activeCat ? ' active' : ''), c);
+      b.onclick = function () { state.activeCat = c; renderPills(); renderGrid(); };
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderGrid() {
+    var wrap = $('grid');
+    clear(wrap);
+    var items = state.activeCat === 'Todos' ? ITEMS : ITEMS.filter(function (i) { return i.cat === state.activeCat; });
+    items.forEach(function (item) {
+      var card = el('div', 'k-card');
+      var img = el('img'); img.src = item.img; img.alt = item.name;
+      var body = el('div', 'body');
+      var name = el('div', 'name', item.name);
+      var desc = el('div', 'desc', item.desc);
+      var row = el('div', 'row');
+      var price = el('span', 'price', fmt(item.price));
+      var addBtn = el('button', 'add', '+');
+      row.appendChild(price); row.appendChild(addBtn);
+      body.appendChild(name); body.appendChild(desc); body.appendChild(row);
+      card.appendChild(img); card.appendChild(body);
+      img.onclick = function () { openSheet(item); };
+      name.onclick = function () { openSheet(item); };
+      addBtn.onclick = function (e) {
+        e.stopPropagation();
+        if (item.options) { openSheet(item); return; }
+        addToCart(item, 1, {});
+        showToast(item.name + ' agregado');
+      };
+      wrap.appendChild(card);
+    });
+    updateCartBar();
+  }
+
+  function showToast(msg) {
+    var t = $('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function () { t.classList.remove('show'); }, 1400);
+  }
+
+  function updateCartBar() {
+    var count = state.cart.reduce(function (a, l) { return a + l.qty; }, 0);
+    var total = state.cart.reduce(function (a, l) { return a + l.qty * l.price; }, 0);
+    $('cartCount').textContent = count;
+    $('cartTotal').textContent = fmt(total);
+    $('cartbar').classList.toggle('show', count > 0);
+  }
+
+  function addToCart(item, qty, opts) {
+    var optSummary = Object.keys(opts).map(function (k) { return opts[k]; }).join(' · ');
+    state.cart.push({ id: item.id + '-' + Date.now(), name: item.name, img: item.img, price: item.price, qty: qty, opts: optSummary });
+    updateCartBar();
+  }
+
+  function openSheet(item) {
+    state.currentItem = item;
+    state.selectedOptions = {};
+    state.qty = 1;
+    $('sheetImg').src = item.img;
+    $('sheetName').textContent = item.name;
+    $('sheetDesc').textContent = item.desc;
+    $('qtyVal').textContent = '1';
+
+    var optsWrap = $('sheetOptions');
+    clear(optsWrap);
+    if (item.options) {
+      item.options.forEach(function (group) {
+        var g = el('div', 'opt-group');
+        var label = el('div', 'label');
+        label.appendChild(document.createTextNode(group.name));
+        if (group.required) label.appendChild(el('span', 'req', 'Obligatorio'));
+        g.appendChild(label);
+        group.choices.forEach(function (choice) {
+          var row = el('div', 'opt-row');
+          var radio = el('div', 'radio');
+          var span = el('span', '', choice);
+          row.appendChild(radio); row.appendChild(span);
+          row.onclick = function () {
+            state.selectedOptions[group.name] = choice;
+            var rows = g.querySelectorAll('.opt-row');
+            for (var i = 0; i < rows.length; i++) rows[i].classList.remove('checked');
+            row.classList.add('checked');
+            validateAddBtn();
+          };
+          g.appendChild(row);
+        });
+        optsWrap.appendChild(g);
+      });
+    }
+    validateAddBtn();
+    $('sheetBackdrop').classList.add('show');
+    $('sheet').classList.add('show');
+    state.history.push('sheet');
+    state.view = 'sheet';
+    renderStepper();
+  }
+
+  function closeSheet(toView) {
+    $('sheetBackdrop').classList.remove('show');
+    $('sheet').classList.remove('show');
+    goto(toView || 'menu', { silent: true });
+  }
+
+  function validateAddBtn() {
+    var item = state.currentItem;
+    var ok = true;
+    if (item && item.options) {
+      item.options.forEach(function (g) {
+        if (g.required && !state.selectedOptions[g.name]) ok = false;
+      });
+    }
+    var btn = $('addBtn');
+    btn.disabled = !ok;
+    var unitPrice = item ? item.price : 0;
+    btn.textContent = 'Agregar — ' + fmt(unitPrice * state.qty);
+  }
+
+  $('qtyMinus').onclick = function () { if (state.qty > 1) { state.qty--; $('qtyVal').textContent = state.qty; validateAddBtn(); } };
+  $('qtyPlus').onclick = function () { state.qty++; $('qtyVal').textContent = state.qty; validateAddBtn(); };
+  $('addBtn').onclick = function () {
+    addToCart(state.currentItem, state.qty, state.selectedOptions);
+    var justAdded = state.currentItem.name;
+    closeSheet('menu');
+    renderGrid();
+    showToast(justAdded + ' agregado');
+  };
+  $('sheetBackdrop').onclick = function () { closeSheet('menu'); };
+
+  function renderCart() {
+    var wrap = $('cartLines');
+    clear(wrap);
+    if (state.cart.length === 0) {
+      var empty = el('p', '', 'Tu pedido está vacío.');
+      empty.style.cssText = 'color:#8a6a55;font-size:0.82rem;text-align:center;margin-top:40px';
+      wrap.appendChild(empty);
+    }
+    state.cart.forEach(function (line) {
+      var row = el('div', 'k-line');
+      var img = el('img'); img.src = line.img; img.alt = '';
+      var meta = el('div', 'meta');
+      meta.appendChild(el('div', 'n', line.qty + '× ' + line.name));
+      if (line.opts) meta.appendChild(el('div', 'o', line.opts));
+      var price = el('div', 'p', fmt(line.qty * line.price));
+      row.appendChild(img); row.appendChild(meta); row.appendChild(price);
+      wrap.appendChild(row);
+    });
+    var total = state.cart.reduce(function (a, l) { return a + l.qty * l.price; }, 0);
+    $('cartSubtotal').textContent = fmt(total);
+    $('cartTotal2').textContent = fmt(total);
+    $('payTotal').textContent = fmt(total);
+    $('qrTotal').textContent = fmt(total);
+  }
+
+  $('cartbar').onclick = function () { renderCart(); goto('cart'); };
+  $('backMenuBtn').onclick = function () { goto('menu'); };
+  $('goPayBtn').onclick = function () { if (state.cart.length) goto('paymethod'); };
+  $('backCartBtn').onclick = function () { goto('cart'); };
+
+  $('chooseCard').onclick = function () {
+    goto('paycard');
+    $('cardStatusTitle').textContent = 'Inserte o acerque su tarjeta';
+    $('cardSpinner').style.display = 'none';
+    setTimeout(function () {
+      $('cardStatusTitle').textContent = 'Procesando pago…';
+      $('cardSpinner').style.display = 'block';
+      setTimeout(function () { finishOrder(); }, 1500);
+    }, 2200);
+  };
+
+  $('chooseQr').onclick = function () {
+    goto('payqr');
+    renderFakeQR();
+  };
+  $('simulateQrPay').onclick = function () { finishOrder(); };
+
+  function renderFakeQR() {
+    var svg = $('qrSvg');
+    clear(svg);
+    var size = 21, px = 6.8, quiet = 2;
+    var total = size + quiet * 2;
+    svg.setAttribute('viewBox', '0 0 ' + (total * px) + ' ' + (total * px));
+    var seed = 987654321 + state.cart.length * 137;
+    function rand() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return (seed / 0x7fffffff); }
+    var grid = [];
+    for (var y = 0; y < size; y++) { grid.push([]); for (var x = 0; x < size; x++) grid[y].push(rand() > 0.56); }
+    function drawFinder(gx, gy) {
+      for (var dy = -1; dy <= 7; dy++) for (var dx = -1; dx <= 7; dx++) {
+        var yy = gy + dy, xx = gx + dx;
+        if (yy < 0 || xx < 0 || yy >= size || xx >= size) continue;
+        var on = (dx >= 0 && dx <= 6 && dy >= 0 && dy <= 6) && (dx === 0 || dx === 6 || dy === 0 || dy === 6 || (dx >= 2 && dx <= 4 && dy >= 2 && dy <= 4));
+        var off = (dx >= 0 && dx <= 6 && dy >= 0 && dy <= 6) && !on;
+        if (on) grid[yy][xx] = true; else if (off) grid[yy][xx] = false;
+      }
+    }
+    drawFinder(0, 0); drawFinder(size - 7, 0); drawFinder(0, size - 7);
+    var ns = 'http://www.w3.org/2000/svg';
+    var rect = document.createElementNS(ns, 'rect');
+    rect.setAttribute('width', total * px); rect.setAttribute('height', total * px); rect.setAttribute('fill', '#fff');
+    svg.appendChild(rect);
+    for (var y2 = 0; y2 < size; y2++) for (var x2 = 0; x2 < size; x2++) {
+      if (!grid[y2][x2]) continue;
+      var r = document.createElementNS(ns, 'rect');
+      r.setAttribute('x', (x2 + quiet) * px); r.setAttribute('y', (y2 + quiet) * px);
+      r.setAttribute('width', px); r.setAttribute('height', px);
+      r.setAttribute('fill', '#2b1206');
+      svg.appendChild(r);
+    }
+  }
+
+  function finishOrder() {
+    var orderNumber = String(100 + Math.floor((state.cart.length + 1) * 37 % 900)).padStart ? String(100 + Math.floor((state.cart.length + 1) * 37 % 900)) : '000';
+    while (orderNumber.length < 3) orderNumber = '0' + orderNumber;
+    $('orderNum').textContent = '#' + orderNumber;
+    $('confirmSummary').textContent = state.cart.map(function (l) { return l.qty + '× ' + l.name; }).join(' · ');
+    goto('confirm');
+    var bar = $('confirmBar');
+    bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run');
+    clearTimeout(window.__kioskTimer);
+    window.__kioskTimer = setTimeout(resetToIdle, 8000);
+  }
+
+  function resetToIdle() {
+    state.cart = [];
+    state.activeCat = 'Todos';
+    state.history = ['idle'];
+    updateCartBar();
+    renderPills();
+    renderGrid();
+    goto('idle', { silent: true });
+  }
+
+  $('newOrderBtn').onclick = function () { clearTimeout(window.__kioskTimer); resetToIdle(); };
+  $('idleTap').onclick = function () { goto('menu'); };
+  $('prevBtn').onclick = function () {
+    if (state.view === 'sheet') { closeSheet('menu'); return; }
+    back();
+  };
+  $('restartBtn').onclick = function () { clearTimeout(window.__kioskTimer); resetToIdle(); };
+
+  renderPills();
+  renderGrid();
+  renderStepper();
+})();
+</script>
