@@ -8,14 +8,15 @@ Funciona en vertical (tótem 1080×1920) y en horizontal.
 
 ## Flujo
 
-1. **Inicio**: video de invitación en bucle (brownie + helado), "Toca para ordenar".
-2. **Menú**: los 9 grupos.
-3. **Grupo**: barra lateral con los grupos y pestañas si hay subcategorías (ej. Helado artesanal / Helado soft). El botón `+` agrega directo los productos sin opciones.
+1. **Inicio**: video de invitación en bucle y el botón "Toca para ordenar".
+2. **Menú**: 9 recuadros con el nombre grande en los colores de Tutto Freddo.
+3. **Grupo**: productos en filas grandes (foto, nombre, descripción, precio). Toda la fila se toca y queda resaltada si ya está en el pedido. Pestañas si hay subcategorías (ej. Helado artesanal / Helado soft).
 4. **Personalizar**: opciones obligatorias marcadas (sabor, jugo, bebida caliente, tamaño…). No deja agregar hasta completarlas.
 5. **Tu pedido**: editar, cambiar cantidades, sugerencia de bebida (o de postre si ya hay bebida) y desglose de IVA 15 % (los precios ya lo incluyen).
-6. **Pago**: tarjeta, Deuna/QR o efectivo en caja, más datos de facturación SRI (cédula, RUC o consumidor final hasta $50).
-7. **Cobro simulado**: barra "MODO DEMO" para aprobar o rechazar.
-8. **Confirmación**: número de pedido y reinicio automático.
+6. **Datos de facturación**: siempre, sin importar cómo se pague (cédula, RUC o consumidor final hasta $50).
+7. **Método de pago**: tarjeta, Deuna/QR o efectivo en caja.
+8. **Cobro simulado**: barra "MODO DEMO" para aprobar o rechazar.
+9. **Confirmación**: número de pedido y reinicio automático.
 
 Si nadie toca la pantalla durante 75 s, pregunta "¿Sigues ahí?" y a los 15 s vuelve al inicio.
 

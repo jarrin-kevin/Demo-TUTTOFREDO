@@ -1,10 +1,10 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react';
-import { cartReducer, makeLine } from './lib/cart.js';
-import { defaultSelections } from './lib/catalog.js';
+import { cartReducer, cartTotal } from './lib/cart.js';
 import Attract from './screens/Attract.jsx';
 import Menu from './screens/Menu.jsx';
 import Group from './screens/Group.jsx';
 import Cart from './screens/Cart.jsx';
+import Billing from './screens/Billing.jsx';
 import Payment from './screens/Payment.jsx';
 import PayTerminal from './screens/PayTerminal.jsx';
 import Done from './screens/Done.jsx';
@@ -30,6 +30,7 @@ export default function App() {
   const [groupSlug, setGroupSlug] = useState(null);
   const [cart, dispatch] = useReducer(cartReducer, []);
   const [sheet, setSheet] = useState(null); // { item, line? }
+  const [billing, setBilling] = useState(null);
   const [order, setOrder] = useState(null); // { method, billing, number, lines, total }
   const [confirmCancel, setConfirmCancel] = useState(false);
   const [idleLeft, setIdleLeft] = useState(null);
@@ -39,6 +40,7 @@ export default function App() {
     dispatch({ type: 'clear' });
     setSheet(null);
     setOrder(null);
+    setBilling(null);
     setGroupSlug(null);
     setConfirmCancel(false);
     setIdleLeft(null);
@@ -74,8 +76,6 @@ export default function App() {
 
   const openItem = (item, line) => setSheet({ item, line });
 
-  const quickAdd = item => dispatch({ type: 'add', line: makeLine(item, defaultSelections(item), 1) });
-
   const confirmSheet = line => {
     if (sheet.line) dispatch({ type: 'replace', key: sheet.line.key, line });
     else dispatch({ type: 'add', line });
@@ -84,9 +84,10 @@ export default function App() {
 
   const askCancel = () => (cart.length ? setConfirmCancel(true) : reset());
 
-  const startPayment = ({ method, billing, total }) => {
-    setOrder({ method, billing, total, lines: cart, number: null });
-    if (method === 'cash') finishOrder({ method, billing, total, lines: cart });
+  const startPayment = method => {
+    const base = { method, billing, total: cartTotal(cart), lines: cart, number: null };
+    setOrder(base);
+    if (method === 'cash') finishOrder(base);
     else setScreen('pay');
   };
 
@@ -109,10 +110,8 @@ export default function App() {
         <Group
           {...common}
           slug={groupSlug}
-          onGroup={setGroupSlug}
           onBack={() => setScreen('menu')}
           onItem={openItem}
-          onQuickAdd={quickAdd}
         />
       )}
       {screen === 'cart' && (
@@ -122,11 +121,23 @@ export default function App() {
           onItem={openItem}
           onBack={() => setScreen(groupSlug ? 'group' : 'menu')}
           onCancel={askCancel}
-          onPay={() => setScreen('payment')}
+          onPay={() => setScreen('billing')}
+        />
+      )}
+      {screen === 'billing' && (
+        <Billing
+          total={cartTotal(cart)}
+          initial={billing}
+          onBack={() => setScreen('cart')}
+          onCancel={askCancel}
+          onNext={b => {
+            setBilling(b);
+            setScreen('payment');
+          }}
         />
       )}
       {screen === 'payment' && (
-        <Payment cart={cart} onBack={() => setScreen('cart')} onCancel={askCancel} onPay={startPayment} />
+        <Payment total={cartTotal(cart)} onBack={() => setScreen('billing')} onCancel={askCancel} onPay={startPayment} />
       )}
       {screen === 'pay' && order && (
         <PayTerminal order={order} onApproved={() => finishOrder()} onBack={() => setScreen('payment')} />

@@ -13,6 +13,8 @@
     {
       "slug": "desayunos",
       "name": "Desayunos",
+      "title": "Desayunos",
+      "caption": "Desayunos y pancakes",
       "image": "/images/products/desayuno-costeno.webp",
       "cover": "/images/products/desayunos-cover.webp",
       "categories": [
@@ -23,6 +25,8 @@
     {
       "slug": "sanduches-y-snacks",
       "name": "Sánduches y Snacks",
+      "title": "Sánduches",
+      "caption": "Sánduches, empanadas y tartas",
       "image": "/images/products/club.webp",
       "cover": "/images/products/sanduches-cover.webp",
       "categories": [
@@ -33,6 +37,8 @@
     {
       "slug": "pizzas-y-lasana",
       "name": "Pizzas y Lasaña",
+      "title": "Pizzas",
+      "caption": "Pizzas y lasaña",
       "image": "/images/products/hawayana.webp",
       "cover": "/images/products/pizza-cover.webp",
       "categories": [
@@ -43,6 +49,8 @@
     {
       "slug": "alitas-y-ensaladas",
       "name": "Alitas y Ensaladas",
+      "title": "Alitas",
+      "caption": "Alitas BBQ y ensaladas",
       "image": "/images/products/alitas.webp",
       "cover": "/images/products/alitas-bbq-cover.webp",
       "categories": [
@@ -53,6 +61,8 @@
     {
       "slug": "crepes",
       "name": "Crepes",
+      "title": "Crepes",
+      "caption": "Crepes de sal y de dulce",
       "image": "/images/products/nutella.webp",
       "cover": "/images/products/crepes-de-dulce-cover.webp",
       "categories": [
@@ -63,6 +73,8 @@
     {
       "slug": "helados",
       "name": "Helados",
+      "title": "Helados",
+      "caption": "Helado artesanal y soft",
       "image": "/images/products/mantecado-oreo.webp",
       "cover": "/images/products/helados-cover.webp",
       "categories": [
@@ -73,6 +85,8 @@
     {
       "slug": "postres-y-tortas",
       "name": "Postres y Tortas",
+      "title": "Postres",
+      "caption": "Postres y tortas",
       "image": "/images/products/tiramisu.webp",
       "cover": "/images/products/postres-cover.webp",
       "categories": [
@@ -83,6 +97,8 @@
     {
       "slug": "bebidas",
       "name": "Bebidas",
+      "title": "Bebidas",
+      "caption": "Jugos, limonadas, tés y más",
       "image": "/images/products/limonada-de-frutos-rojos-y-rosas.webp",
       "cover": "/images/products/bebidas-frias-cover.webp",
       "categories": [
@@ -92,6 +108,8 @@
     {
       "slug": "combos",
       "name": "Combos",
+      "title": "Combos",
+      "caption": "Combos familiares",
       "image": "/images/products/combo-cumpleanero.webp",
       "cover": "/images/products/combos-familiares-cover.webp",
       "categories": [

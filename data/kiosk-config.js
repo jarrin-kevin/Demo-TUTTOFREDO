@@ -8,17 +8,18 @@ module.exports = {
 
   // Los 9 botones de la pantalla "Menú". Cada grupo junta una o más
   // categorías del menú original; si tiene varias se muestran como pestañas.
+  // title: palabra grande del botón; caption: texto debajo del recuadro.
   // image: foto cuadrada del botón; cover: banner del encabezado.
   groups: [
-    { slug: 'desayunos', name: 'Desayunos', image: 'desayuno-costeno', cover: 'desayunos', categories: ['desayunos', 'pancakes'] },
-    { slug: 'sanduches-y-snacks', name: 'Sánduches y Snacks', image: 'club', cover: 'sanduches', categories: ['sanduches', 'nueva-linea-de-sal'] },
-    { slug: 'pizzas-y-lasana', name: 'Pizzas y Lasaña', image: 'hawayana', cover: 'pizza', categories: ['pizza', 'lasana'] },
-    { slug: 'alitas-y-ensaladas', name: 'Alitas y Ensaladas', image: 'alitas', cover: 'alitas-bbq', categories: ['alitas-bbq', 'ensaladas'] },
-    { slug: 'crepes', name: 'Crepes', image: 'nutella', cover: 'crepes-de-dulce', categories: ['crepes-de-sal', 'crepes-de-dulce'] },
-    { slug: 'helados', name: 'Helados', image: 'mantecado-oreo', cover: 'helados', categories: ['helados', 'helados-soft'] },
-    { slug: 'postres-y-tortas', name: 'Postres y Tortas', image: 'tiramisu', cover: 'postres', categories: ['postres', 'tortas'] },
-    { slug: 'bebidas', name: 'Bebidas', image: 'limonada-de-frutos-rojos-y-rosas', cover: 'bebidas-frias', categories: ['bebidas-frias'] },
-    { slug: 'combos', name: 'Combos', image: 'combo-cumpleanero', cover: 'combos-familiares', categories: ['combos-familiares'] },
+    { slug: 'desayunos', name: 'Desayunos', title: 'Desayunos', caption: 'Desayunos y pancakes', image: 'desayuno-costeno', cover: 'desayunos', categories: ['desayunos', 'pancakes'] },
+    { slug: 'sanduches-y-snacks', name: 'Sánduches y Snacks', title: 'Sánduches', caption: 'Sánduches, empanadas y tartas', image: 'club', cover: 'sanduches', categories: ['sanduches', 'nueva-linea-de-sal'] },
+    { slug: 'pizzas-y-lasana', name: 'Pizzas y Lasaña', title: 'Pizzas', caption: 'Pizzas y lasaña', image: 'hawayana', cover: 'pizza', categories: ['pizza', 'lasana'] },
+    { slug: 'alitas-y-ensaladas', name: 'Alitas y Ensaladas', title: 'Alitas', caption: 'Alitas BBQ y ensaladas', image: 'alitas', cover: 'alitas-bbq', categories: ['alitas-bbq', 'ensaladas'] },
+    { slug: 'crepes', name: 'Crepes', title: 'Crepes', caption: 'Crepes de sal y de dulce', image: 'nutella', cover: 'crepes-de-dulce', categories: ['crepes-de-sal', 'crepes-de-dulce'] },
+    { slug: 'helados', name: 'Helados', title: 'Helados', caption: 'Helado artesanal y soft', image: 'mantecado-oreo', cover: 'helados', categories: ['helados', 'helados-soft'] },
+    { slug: 'postres-y-tortas', name: 'Postres y Tortas', title: 'Postres', caption: 'Postres y tortas', image: 'tiramisu', cover: 'postres', categories: ['postres', 'tortas'] },
+    { slug: 'bebidas', name: 'Bebidas', title: 'Bebidas', caption: 'Jugos, limonadas, tés y más', image: 'limonada-de-frutos-rojos-y-rosas', cover: 'bebidas-frias', categories: ['bebidas-frias'] },
+    { slug: 'combos', name: 'Combos', title: 'Combos', caption: 'Combos familiares', image: 'combo-cumpleanero', cover: 'combos-familiares', categories: ['combos-familiares'] },
   ],
 
   // Nombres de pestaña más cortos cuando la categoría vive dentro de un grupo.

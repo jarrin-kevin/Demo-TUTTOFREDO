@@ -2,19 +2,23 @@ import React from 'react';
 import { groups } from '../lib/catalog.js';
 import { CartBar, TopBar } from '../components/ui.jsx';
 
-// Los 9 botones del menú.
+// Colores del logo de Tutto Freddo, uno por recuadro.
+export const BRAND_COLORS = ['var(--red)', 'var(--blue)', 'var(--magenta)', 'var(--orange)', 'var(--green)'];
+
+// Los 9 grupos: recuadro con el nombre grande en color y la foto.
 export default function Menu({ cart, onCart, onCancel, onGroup }) {
   return (
     <main className="screen">
       <TopBar title="Menú" cart={cart} onCart={onCart} onCancel={onCancel} />
       <div className="screen-scroll menu">
-        <h2 className="hello">¿Qué se te antoja hoy?</h2>
         <div className="group-grid">
-          {groups.map(g => (
-            <button key={g.slug} className="gtile" onClick={() => onGroup(g.slug)}>
-              <img src={g.image} alt="" />
-              <span className="gtile-name">{g.name}</span>
-              <span className="gtile-count">{g.categories.reduce((a, c) => a + c.items.length, 0)} opciones</span>
+          {groups.map((g, i) => (
+            <button key={g.slug} className="gtile" onClick={() => onGroup(g.slug)} style={{ '--tile': BRAND_COLORS[i % BRAND_COLORS.length] }}>
+              <span className="gtile-frame">
+                <span className="gtile-title">{g.title}</span>
+                <img src={g.image} alt="" />
+              </span>
+              <span className="gtile-caption">{g.caption}</span>
             </button>
           ))}
         </div>

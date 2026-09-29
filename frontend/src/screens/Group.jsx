@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { groups, groupsBySlug } from '../lib/catalog.js';
+import { formatMoney, groups, groupsBySlug } from '../lib/catalog.js';
 import { CartBar, Icon, TopBar } from '../components/ui.jsx';
-import ProductCard from '../components/ProductCard.jsx';
+import { BRAND_COLORS } from './Menu.jsx';
 
-// Productos de un grupo: barra lateral con los 9 grupos y pestañas si el
-// grupo junta varias categorías (Helado artesanal / Helado soft, etc.).
-export default function Group({ slug, cart, onCart, onCancel, onBack, onGroup, onItem, onQuickAdd }) {
+// Productos de un grupo en filas grandes (foto alternando lado). Toda la
+// fila es el botón; queda resaltada si el producto ya está en el pedido.
+export default function Group({ slug, cart, onCart, onCancel, onBack, onItem }) {
   const group = groupsBySlug[slug];
+  const color = BRAND_COLORS[groups.indexOf(group) % BRAND_COLORS.length];
   const [tab, setTab] = useState(0);
-  const [toast, setToast] = useState(null);
   const scroller = useRef(null);
 
   useEffect(() => {
@@ -17,55 +17,42 @@ export default function Group({ slug, cart, onCart, onCancel, onBack, onGroup, o
   useEffect(() => {
     scroller.current?.scrollTo({ top: 0 });
   }, [slug, tab]);
-  useEffect(() => {
-    if (!toast) return;
-    const t = setTimeout(() => setToast(null), 1600);
-    return () => clearTimeout(t);
-  }, [toast]);
 
   const category = group.categories[tab] || group.categories[0];
-
-  const quickAdd = item => {
-    onQuickAdd(item);
-    setToast(`${item.name} agregado`);
-  };
+  const qtyInCart = id => cart.filter(l => l.item.id === id).reduce((a, l) => a + l.qty, 0);
 
   return (
-    <main className="screen">
-      <TopBar title={group.name} onBack={onBack} cart={cart} onCart={onCart} onCancel={onCancel} />
-      <div className="group-layout">
-        <nav className="rail" aria-label="Categorías">
-          {groups.map(g => (
-            <button key={g.slug} className={'rail-item' + (g.slug === slug ? ' on' : '')} onClick={() => onGroup(g.slug)}>
-              <img src={g.image} alt="" />
-              <span>{g.name}</span>
+    <main className="screen" style={{ '--tile': color }}>
+      <TopBar title={group.title} onBack={onBack} cart={cart} onCart={onCart} onCancel={onCancel} />
+      {group.categories.length > 1 && (
+        <div className="tabs" role="tablist">
+          {group.categories.map((c, i) => (
+            <button key={c.slug} role="tab" aria-selected={i === tab} className={'tab' + (i === tab ? ' on' : '')} onClick={() => setTab(i)}>
+              {c.label}
             </button>
           ))}
-        </nav>
-        <section className="group-main" ref={scroller}>
-          <div className="group-banner" style={{ backgroundImage: `url(${group.cover})` }} />
-          {group.categories.length > 1 && (
-            <div className="tabs" role="tablist">
-              {group.categories.map((c, i) => (
-                <button key={c.slug} role="tab" aria-selected={i === tab} className={'tab' + (i === tab ? ' on' : '')} onClick={() => setTab(i)}>
-                  {c.label}
-                  <small>{c.items.length}</small>
-                </button>
-              ))}
-            </div>
-          )}
-          <div className="product-grid">
-            {category.items.map(item => (
-              <ProductCard key={item.id} item={item} onOpen={onItem} onQuickAdd={quickAdd} />
-            ))}
-          </div>
-        </section>
-      </div>
-      {toast && (
-        <div className="toast" role="status">
-          <Icon name="check" /> {toast}
         </div>
       )}
+      <section className="screen-scroll plist" ref={scroller}>
+        {category.items.map((item, i) => {
+          const qty = qtyInCart(item.id);
+          return (
+            <button key={item.id} className={'prow' + (i % 2 ? ' flip' : '') + (qty ? ' in-cart' : '')} onClick={() => onItem(item)}>
+              <img src={item.image} alt="" loading="lazy" />
+              <span className="prow-text">
+                <span className="prow-name">{item.name}</span>
+                {item.description && <span className="prow-desc">{item.description}</span>}
+                <span className="prow-price">{formatMoney(item.price)}</span>
+                {qty > 0 && (
+                  <span className="prow-qty">
+                    <Icon name="check" /> {qty} en tu pedido
+                  </span>
+                )}
+              </span>
+            </button>
+          );
+        })}
+      </section>
       <CartBar cart={cart} onCart={onCart} />
     </main>
   );

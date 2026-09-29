@@ -22,7 +22,6 @@ export default function Attract({ onStart }) {
       <div className="attract-shade" />
       <div className="attract-content">
         <button className="btn-primary btn-xl attract-cta">Toca para ordenar</button>
-        <p className="attract-foot">Paga con tarjeta, Deuna o en caja</p>
       </div>
     </main>
   );
