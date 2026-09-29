@@ -4,7 +4,7 @@ import { Icon, TopBar } from '../components/ui.jsx';
 
 const METHODS = [
   { id: 'card', icon: 'card', name: 'Tarjeta de crédito o débito', detail: 'Visa · Mastercard · Diners · American Express' },
-  { id: 'qr', icon: 'phone', name: 'Deuna o transferencia', detail: 'Escanea un código QR con tu celular' },
+  { id: 'deuna', icon: 'phone', name: 'Deuna', detail: 'Paga desde tu celular con un código de 6 dígitos' },
   { id: 'cash', icon: 'cash', name: 'Efectivo en caja', detail: 'Paga en caja con tu número de pedido' },
 ];
 

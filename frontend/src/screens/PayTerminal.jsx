@@ -1,31 +1,47 @@
 import React, { useEffect, useRef, useState } from 'react';
-import QRCode from 'qrcode';
 import { formatMoney } from '../lib/catalog.js';
 import { Icon } from '../components/ui.jsx';
 
-const QR_SECONDS = 180;
+const CODE_SECONDS = 180;
+const RECENT_KEY = 'tf-deuna-recent';
+
+// Código de pago Deuna de 6 dígitos, distinto de los últimos emitidos en este
+// tótem. En producción lo entrega la API de Deuna al crear el cobro.
+function newPaymentCode() {
+  let recent = [];
+  try {
+    recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+  } catch {
+    recent = [];
+  }
+  let code;
+  do {
+    const n = crypto.getRandomValues(new Uint32Array(1))[0] % 1_000_000;
+    code = String(n).padStart(6, '0');
+  } while (recent.includes(code));
+  try {
+    localStorage.setItem(RECENT_KEY, JSON.stringify([code, ...recent].slice(0, 200)));
+  } catch {
+    // sin almacenamiento: el código sigue siendo aleatorio
+  }
+  return code;
+}
 
 // Cobro simulado. En el equipo real aquí se conecta el datáfono (Datafast)
 // o la API de Deuna; en el demo se aprueba o rechaza con los botones de abajo.
 export default function PayTerminal({ order, onApproved, onBack }) {
   const [status, setStatus] = useState('waiting'); // waiting | processing | approved | declined
-  const [qr, setQr] = useState(null);
-  const [left, setLeft] = useState(QR_SECONDS);
-  const isQr = order.method === 'qr';
+  const isDeuna = order.method === 'deuna';
+  const [code, setCode] = useState(() => (isDeuna ? newPaymentCode() : null));
+  const [left, setLeft] = useState(CODE_SECONDS);
   const approvedRef = useRef(onApproved);
   approvedRef.current = onApproved;
 
   useEffect(() => {
-    if (!isQr) return;
-    const payload = `DEUNA-DEMO|TUTTOFREDDO|${order.total.toFixed(2)}|${Date.now()}`;
-    QRCode.toDataURL(payload, { margin: 1, width: 560, color: { dark: '#2b1b12', light: '#ffffff' } }).then(setQr);
-  }, [isQr, order.total]);
-
-  useEffect(() => {
-    if (!isQr || status !== 'waiting') return;
+    if (!isDeuna || status !== 'waiting') return;
     const t = setInterval(() => setLeft(s => Math.max(0, s - 1)), 1000);
     return () => clearInterval(t);
-  }, [isQr, status]);
+  }, [isDeuna, status, code]);
 
   useEffect(() => {
     if (status === 'processing') {
@@ -38,7 +54,13 @@ export default function PayTerminal({ order, onApproved, onBack }) {
     }
   }, [status]);
 
-  const expired = isQr && left === 0 && status === 'waiting';
+  const refreshCode = () => {
+    setCode(newPaymentCode());
+    setLeft(CODE_SECONDS);
+    setStatus('waiting');
+  };
+
+  const expired = isDeuna && left === 0 && status === 'waiting';
   const mmss = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}`;
 
   return (
@@ -46,7 +68,7 @@ export default function PayTerminal({ order, onApproved, onBack }) {
       <div className="terminal-box">
         <p className="terminal-amount">{formatMoney(order.total)}</p>
 
-        {status === 'waiting' && !isQr && (
+        {status === 'waiting' && !isDeuna && (
           <>
             <div className="card-anim" aria-hidden="true">
               <div className="card-chip" />
@@ -56,11 +78,32 @@ export default function PayTerminal({ order, onApproved, onBack }) {
           </>
         )}
 
-        {status === 'waiting' && isQr && (
+        {status === 'waiting' && isDeuna && (
           <>
-            <div className={'qr' + (expired ? ' expired' : '')}>{qr && <img src={qr} alt="Código QR de pago" />}</div>
-            <h2>{expired ? 'El código expiró' : 'Escanea con Deuna o tu app bancaria'}</h2>
-            <p>{expired ? 'Vuelve atrás para generar uno nuevo.' : `Esperando confirmación… el código vence en ${mmss}`}</p>
+            <h2>{expired ? 'El código venció' : 'Paga con Deuna'}</h2>
+            <div className={'paycode' + (expired ? ' expired' : '')} aria-label={`Código de pago ${code.split('').join(' ')}`}>
+              {code.split('').map((d, i) => (
+                <span key={i} className={i === 3 ? 'gap' : ''}>
+                  {d}
+                </span>
+              ))}
+            </div>
+            {expired ? (
+              <button className="btn-primary btn-lg" onClick={refreshCode}>
+                Generar nuevo código
+              </button>
+            ) : (
+              <>
+                <ol className="paycode-steps">
+                  <li>Abre Deuna en tu celular</li>
+                  <li>Digita este código</li>
+                  <li>
+                    Te aparecerá el monto de <strong>{formatMoney(order.total)}</strong>: toca Pagar
+                  </li>
+                </ol>
+                <p>Esperando tu pago… el código vence en {mmss}</p>
+              </>
+            )}
           </>
         )}
 
@@ -68,7 +111,7 @@ export default function PayTerminal({ order, onApproved, onBack }) {
           <>
             <div className="spinner" aria-hidden="true" />
             <h2>Procesando pago…</h2>
-            <p>No retires tu tarjeta.</p>
+            <p>{isDeuna ? 'Recibiendo la confirmación de Deuna.' : 'No retires tu tarjeta.'}</p>
           </>
         )}
 
@@ -77,7 +120,7 @@ export default function PayTerminal({ order, onApproved, onBack }) {
             <div className="ok-mark">
               <Icon name="check" size="3em" />
             </div>
-            <h2>¡Pago aprobado!</h2>
+            <h2>¡Pago aceptado!</h2>
           </>
         )}
 
@@ -92,7 +135,7 @@ export default function PayTerminal({ order, onApproved, onBack }) {
               <button className="btn-secondary btn-lg" onClick={onBack}>
                 Otro método
               </button>
-              <button className="btn-primary btn-lg" onClick={() => setStatus('waiting')}>
+              <button className="btn-primary btn-lg" onClick={isDeuna ? refreshCode : () => setStatus('waiting')}>
                 Reintentar
               </button>
             </div>
@@ -109,7 +152,7 @@ export default function PayTerminal({ order, onApproved, onBack }) {
       {status === 'waiting' && !expired && (
         <div className="demo-bar">
           <span>MODO DEMO</span>
-          <button onClick={() => setStatus('processing')}>Simular pago aprobado</button>
+          <button onClick={() => setStatus('processing')}>Simular pago aceptado</button>
           <button onClick={() => setStatus('declined')}>Simular rechazo</button>
         </div>
       )}

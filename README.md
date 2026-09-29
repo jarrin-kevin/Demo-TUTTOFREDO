@@ -14,8 +14,8 @@ Funciona en vertical (tótem 1080×1920) y en horizontal.
 4. **Personalizar**: opciones obligatorias marcadas (sabor, jugo, bebida caliente, tamaño…). No deja agregar hasta completarlas.
 5. **Tu pedido**: editar, cambiar cantidades, sugerencia de bebida (o de postre si ya hay bebida) y desglose de IVA 15 % (los precios ya lo incluyen).
 6. **Datos de facturación**: siempre, sin importar cómo se pague (cédula, RUC o consumidor final hasta $50).
-7. **Método de pago**: tarjeta, Deuna/QR o efectivo en caja.
-8. **Cobro simulado**: barra "MODO DEMO" para aprobar o rechazar.
+7. **Método de pago**: tarjeta, Deuna (código único de 6 dígitos) o efectivo en caja.
+8. **Cobro**: con Deuna el tótem muestra un código único de 6 dígitos; el cliente lo digita en su app, ve el monto, paga y el tótem muestra "¡Pago aceptado!". En el demo se simula con la barra "MODO DEMO".
 9. **Confirmación**: número de pedido y reinicio automático.
 
 Si nadie toca la pantalla durante 75 s, pregunta "¿Sigues ahí?" y a los 15 s vuelve al inicio.

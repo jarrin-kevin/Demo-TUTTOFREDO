@@ -1006,7 +1006,7 @@ img {
   gap: 1rem;
   text-align: center;
 }
-.terminal-amount {
+.terminal-box .terminal-amount {
   font-family: var(--display);
   font-weight: 700;
   font-size: 3.2rem;
@@ -1050,20 +1050,39 @@ img {
     transform: translateY(1.2rem) rotateX(25deg);
   }
 }
-.qr {
-  width: 18rem;
-  height: 18rem;
-  padding: 1rem;
-  border-radius: 1.2rem;
-  border: 0.2rem solid var(--line);
-  background: #fff;
+.paycode {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.8rem 0 0.4rem;
 }
-.qr img {
-  width: 100%;
-  height: 100%;
+.paycode span {
+  display: grid;
+  place-items: center;
+  width: 4.2rem;
+  height: 5.4rem;
+  border-radius: 1rem;
+  border: 0.2rem solid var(--red);
+  background: var(--red-soft);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 3.4rem;
+  color: var(--red);
 }
-.qr.expired {
-  opacity: 0.2;
+.paycode span.gap {
+  margin-left: 1rem;
+}
+.paycode.expired span {
+  opacity: 0.25;
+  text-decoration: line-through;
+}
+.paycode-steps {
+  margin: 0.4rem 0 0;
+  padding: 1rem 1.4rem 1rem 2.6rem;
+  border-radius: var(--radius);
+  background: var(--panel);
+  text-align: left;
+  font-size: 1.15rem;
+  line-height: 1.8;
 }
 .spinner {
   width: 5rem;
