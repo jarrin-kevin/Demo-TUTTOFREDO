@@ -8,6 +8,10 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
     Args = args,
     ContentRootPath = AppContext.BaseDirectory,
+    // La página del tótem viene incluida en wwwroot (la arma el workflow):
+    // se abre en http://127.0.0.1:5123 y llama a /imprimir en el mismo
+    // origen, así Chrome no bloquea nada y no aparece el diálogo de imprimir.
+    WebRootPath = "wwwroot",
 });
 var opciones = builder.Configuration.GetSection("Impresora").Get<ImpresoraOptions>() ?? new ImpresoraOptions();
 builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
@@ -24,6 +28,8 @@ app.Use(async (ctx, next) =>
     await next();
 });
 app.UseCors();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.MapGet("/estado", () => Results.Ok(new { ok = true, impresora = TicketPrinter.NombreImpresora(opciones) }));
 
@@ -64,5 +70,8 @@ app.MapGet("/prueba", () =>
     TicketPrinter.Imprimir(prueba, opciones);
     return Results.Text("Ticket de prueba enviado a " + TicketPrinter.NombreImpresora(opciones));
 });
+
+// Cualquier otra ruta es la app del tótem (SPA).
+app.MapFallbackToFile("index.html");
 
 app.Run();

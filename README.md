@@ -23,10 +23,10 @@ Si nadie toca la pantalla durante 75 s, pregunta "¿Sigues ahí?" y a los 15 s v
 ## Usar en el tótem
 
 1. En Windows, deja la impresora térmica de 80 mm como **impresora predeterminada**.
-2. Abre `kiosko/instalar-impresora.bat` (una sola vez): baja e instala el servicio de impresión ESC/POS y lo deja arrancando con Windows. No necesita .NET.
-3. Abre `kiosko/abrir-tutto-freddo.bat`: abre el tótem en pantalla completa. Para salir: Alt+F4.
+2. Abre `kiosko/instalar-impresora.bat` (una vez, y cada vez que quieras actualizar): baja el servicio de impresión con la app del tótem incluida y lo deja arrancando con Windows. No necesita .NET.
+3. Abre `kiosko/abrir-tutto-freddo.bat`: abre el tótem en pantalla completa desde http://127.0.0.1:5123. Para salir: Alt+F4.
 
-El ticket se imprime por **ESC/POS** directo (librería ESC_POS_USB_NET), sin márgenes del driver y con corte justo al final (GS V B 1). Si el servicio no está abierto, el tótem usa la impresión del navegador como respaldo.
+El servicio sirve la app del tótem y la imprime por **ESC/POS** directo (librería ESC_POS_USB_NET): sin diálogo de imprimir, sin márgenes del driver y con corte justo al final (GS V B 1). Como todo corre en la misma PC, funciona sin internet.
 
 Ticket de prueba: con el servicio abierto, entra a http://127.0.0.1:5123/prueba
 

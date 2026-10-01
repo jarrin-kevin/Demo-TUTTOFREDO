@@ -2,7 +2,10 @@ import { branch, taxBreakdown } from './catalog.js';
 
 // Servicio local de impresión (carpeta impresora/ del repo): imprime por
 // ESC/POS directo en la térmica, sin márgenes del driver y con corte al ras.
-export const PRINT_URL = import.meta.env.VITE_PRINT_URL || 'http://127.0.0.1:5123';
+// Si la app la sirve el mismo servicio (build con VITE_PRINT_URL=same-origin)
+// se llama a /imprimir en el mismo origen.
+const envUrl = import.meta.env.VITE_PRINT_URL;
+export const PRINT_URL = envUrl === 'same-origin' ? '' : envUrl || 'http://127.0.0.1:5123';
 
 export const METODOS = { card: 'Tarjeta', deuna: 'Deuna', cash: 'Efectivo (pagar en caja)' };
 
