@@ -91,7 +91,9 @@ public static class TicketPrinter
             p.Append("Retira tu pedido cuando llamen tu número");
 
             p.NewLines(Math.Max(1, o.LineasAntesDelCorte)); // que el texto pase la cuchilla
-            p.FullPaperCut();
+            // GS V 'B' 1 = corte parcial real en esta impresora (el corte de la
+            // librería daba problemas).
+            p.Append(new byte[] { 0x1D, 0x56, 0x42, 0x01 });
             p.PrintDocument();
         }
     }
