@@ -1,12 +1,18 @@
-/* Ticket térmico. En pantalla no se ve; solo sale al imprimir. */
+/* Ticket térmico. En pantalla queda fuera de vista (para poder medir su
+   alto antes de imprimir); solo sale al imprimir.
+   El papel es de 80 mm pero la impresora solo imprime ~72 mm al centro,
+   por eso el contenido va con 5 mm de margen a cada lado. */
 .ticket {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: -9999px;
   width: 80mm; /* usa 58mm si tu impresora es de ese ancho */
   box-sizing: border-box;
-  padding: 2mm 3mm 6mm;
+  padding: 1mm 5mm 4mm;
   font-family: 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 11.5px;
   line-height: 1.3;
+  overflow-wrap: anywhere;
   color: #000;
   background: #fff;
 }
@@ -50,13 +56,20 @@
 .ticket table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 11px;
+  font-size: 10.5px;
+  table-layout: fixed;
+}
+.ticket th:nth-child(1) {
+  width: 46%;
+}
+.ticket th:nth-child(2) {
+  width: 12%;
 }
 .ticket th,
 .ticket td {
   text-align: left;
   vertical-align: top;
-  padding: 1px 2px;
+  padding: 1px 1px;
 }
 .ticket th {
   border-bottom: 1px solid #000;
@@ -87,11 +100,11 @@
     display: none !important;
   }
   .ticket {
-    display: block;
+    position: static;
   }
 
+  /* El alto exacto lo pone printTicket() en Recibo.jsx (mide el ticket). */
   @page {
-    size: 80mm auto; /* ancho fijo, alto automatico segun el contenido */
     margin: 0;
   }
 }

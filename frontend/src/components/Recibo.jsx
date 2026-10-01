@@ -43,7 +43,25 @@ function Cliente({ billing }) {
   );
 }
 
-// autoPrint: abre el diálogo de impresión apenas carga el logo.
+const PAPEL_MM = 80;
+
+// Chrome no acepta un alto "auto" en @page: se mide el ticket y se le da
+// a la página exactamente ese alto, así la impresora corta al ras.
+export function printTicket() {
+  const ticket = document.getElementById('ticket');
+  if (!ticket) return;
+  const altoMm = Math.ceil((ticket.getBoundingClientRect().height * 25.4) / 96) + 2;
+  let estilo = document.getElementById('ticket-page');
+  if (!estilo) {
+    estilo = document.createElement('style');
+    estilo.id = 'ticket-page';
+    document.head.appendChild(estilo);
+  }
+  estilo.textContent = `@page { size: ${PAPEL_MM}mm ${altoMm}mm; margin: 0; }`;
+  window.print();
+}
+
+// autoPrint: imprime apenas carga el logo.
 export default function Recibo({ order, autoPrint }) {
   const logo = useRef(null);
   const { base, tax, rate, total } = taxBreakdown(order.total);
@@ -59,7 +77,7 @@ export default function Recibo({ order, autoPrint }) {
       img.addEventListener('load', resolve, { once: true });
       img.addEventListener('error', resolve, { once: true });
     });
-    ready.then(() => !cancelled && window.print());
+    ready.then(() => !cancelled && printTicket());
     return () => {
       cancelled = true;
     };

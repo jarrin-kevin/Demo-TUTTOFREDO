@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { formatMoney } from '../lib/catalog.js';
 import { Icon } from '../components/ui.jsx';
-import Recibo from '../components/Recibo.jsx';
+import Recibo, { printTicket } from '../components/Recibo.jsx';
 
 const RESET_SECONDS = 25;
 
@@ -48,7 +48,7 @@ export default function Done({ order, onNew }) {
         </ul>
         {order.billing.email && <p className="done-mail">Tu factura electrónica llegará a {order.billing.email}</p>}
         <div className="done-actions">
-          <button className="btn-secondary btn-lg" onClick={() => window.print()}>
+          <button className="btn-secondary btn-lg" onClick={printTicket}>
             Reimprimir ticket
           </button>
           <button className="btn-primary btn-lg" onClick={onNew}>

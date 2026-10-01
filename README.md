@@ -20,6 +20,13 @@ Funciona en vertical (tótem 1080×1920) y en horizontal.
 
 Si nadie toca la pantalla durante 75 s, pregunta "¿Sigues ahí?" y a los 15 s vuelve al inicio.
 
+## Usar en el tótem
+
+1. En Windows, deja la impresora térmica de 80 mm como **impresora predeterminada**.
+2. Abre `kiosko/abrir-tutto-freddo.bat`: abre el tótem en pantalla completa e imprime el ticket directo, sin diálogo (`--kiosk --kiosk-printing`). Para salir: Alt+F4.
+
+El ticket se imprime con el alto exacto de su contenido, así la impresora corta al ras.
+
 ## Código
 
 Hecho en **React 18 + Vite**, en `frontend/src/`:
