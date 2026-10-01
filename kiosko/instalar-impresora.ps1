@@ -15,6 +15,7 @@ $config  = Join-Path $destino 'appsettings.json'
 
 Write-Host 'Descargando el servicio de impresion...'
 Get-Process TuttoImpresora -ErrorAction SilentlyContinue | Stop-Process -Force
+Start-Sleep -Seconds 1
 Invoke-WebRequest $url -OutFile $zip -UseBasicParsing
 
 New-Item -ItemType Directory -Force $destino | Out-Null
@@ -36,8 +37,13 @@ Start-Sleep -Seconds 3
 try {
     $estado = Invoke-RestMethod 'http://127.0.0.1:5123/estado'
     Write-Host ''
-    Write-Host ('Listo. Imprime en: ' + $estado.impresora) -ForegroundColor Green
-    Write-Host 'Ticket de prueba: abre http://127.0.0.1:5123/prueba en el navegador.'
+    Write-Host ('Listo. Version ' + $estado.version + ', imprime en: ' + $estado.impresora) -ForegroundColor Green
+    if ($estado.totem) {
+        Write-Host 'Totem: http://127.0.0.1:5123  (o abre kiosko/abrir-tutto-freddo.bat)'
+    } else {
+        Write-Host 'Ojo: no se encontro la app del totem en la carpeta wwwroot.' -ForegroundColor Yellow
+    }
+    Write-Host 'Ticket de prueba: http://127.0.0.1:5123/prueba'
 } catch {
     Write-Host 'El servicio no respondio. Revisa que TuttoImpresora.exe este abierto.' -ForegroundColor Yellow
 }

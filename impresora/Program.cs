@@ -18,6 +18,9 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAn
 
 var app = builder.Build();
 var log = app.Logger;
+var version = typeof(Ticket).Assembly.GetName().Version?.ToString(3) ?? "?";
+var webRoot = app.Environment.WebRootPath;
+var tieneTotem = File.Exists(Path.Combine(webRoot ?? "", "index.html"));
 
 // La página del tótem (GitHub Pages) llama a este servicio en 127.0.0.1:
 // Chrome pide permiso de "red local" con este encabezado en el preflight.
@@ -31,7 +34,7 @@ app.UseCors();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-app.MapGet("/estado", () => Results.Ok(new { ok = true, impresora = TicketPrinter.NombreImpresora(opciones) }));
+app.MapGet("/estado", () => Results.Ok(new { ok = true, version, totem = tieneTotem, impresora = TicketPrinter.NombreImpresora(opciones) }));
 
 app.MapPost("/imprimir", (Ticket ticket) =>
 {
@@ -72,6 +75,11 @@ app.MapGet("/prueba", () =>
 });
 
 // Cualquier otra ruta es la app del tótem (SPA).
-app.MapFallbackToFile("index.html");
+if (tieneTotem)
+    app.MapFallbackToFile("index.html");
+else
+    app.MapFallback(() => Results.Text(
+        "Falta la app del totem en " + webRoot + ". Vuelve a ejecutar kiosko/instalar-impresora.bat.",
+        "text/plain; charset=utf-8", statusCode: 503));
 
 app.Run();

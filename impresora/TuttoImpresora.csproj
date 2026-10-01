@@ -9,6 +9,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>TuttoImpresora</AssemblyName>
     <RootNamespace>TuttoImpresora</RootNamespace>
+    <!-- Súbela al cambiar el servicio: la muestra /estado y el instalador. -->
+    <Version>1.1.0</Version>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <SelfContained>true</SelfContained>
     <PublishSingleFile>true</PublishSingleFile>
