@@ -59,8 +59,9 @@ app.MapGet("/prueba", () =>
         Local = new Local { Nombre = "Tutto Freddo - Challuabamba", Direccion = "Av. del Bombero y Challuabamba" },
         Orden = "000",
         FechaHora = DateTime.Now.ToString("dd/MM/yyyy HH:mm"),
-        FormaPago = "Prueba",
-        Cliente = new Cliente { Tipo = "final" },
+        FormaPago = "Efectivo (pagar en caja)",
+        // Con tildes y ñ para revisar la tabla de caracteres.
+        Cliente = new Cliente { Tipo = "cedula", Nombre = "José Peña Muñoz", Identificacion = "1710034065", Direccion = "Av. del Bombero y Challuabamba", Correo = "jose@ejemplo.com" },
         Productos =
         [
             new Producto { Nombre = "Litro de helado", Opciones = "Oreo", Cantidad = 1, ValorUnitario = 9.00m, ValorTotal = 9.00m },
@@ -69,6 +70,8 @@ app.MapGet("/prueba", () =>
         BaseImponible = 10.87m,
         Iva = 1.63m,
         Total = 12.50m,
+        PagoPendiente = true,
+        FacturaPorCorreo = true,
     };
     TicketPrinter.Imprimir(prueba, opciones);
     return Results.Text("Ticket de prueba enviado a " + TicketPrinter.NombreImpresora(opciones));
