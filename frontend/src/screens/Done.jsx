@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { formatMoney } from '../lib/catalog.js';
 import { Icon } from '../components/ui.jsx';
+import Recibo from '../components/Recibo.jsx';
 
 const RESET_SECONDS = 25;
 
@@ -46,11 +47,17 @@ export default function Done({ order, onNew }) {
           </li>
         </ul>
         {order.billing.email && <p className="done-mail">Tu factura electrónica llegará a {order.billing.email}</p>}
-        <button className="btn-primary btn-xl" onClick={onNew}>
-          Nuevo pedido
-        </button>
+        <div className="done-actions">
+          <button className="btn-secondary btn-lg" onClick={() => window.print()}>
+            Reimprimir ticket
+          </button>
+          <button className="btn-primary btn-lg" onClick={onNew}>
+            Nuevo pedido
+          </button>
+        </div>
         <p className="done-reset">La pantalla se reinicia en {Math.max(left, 0)} s</p>
       </div>
+      <Recibo order={order} autoPrint />
     </main>
   );
 }

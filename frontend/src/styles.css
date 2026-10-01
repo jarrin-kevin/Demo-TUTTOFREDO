@@ -1182,6 +1182,11 @@ img {
   border-top: 1px dashed var(--line);
   font-weight: 800;
 }
+.done-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
 .done-mail,
 .done-reset {
   color: var(--ink-2);

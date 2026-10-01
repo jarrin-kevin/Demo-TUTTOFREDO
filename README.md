@@ -16,7 +16,7 @@ Funciona en vertical (tótem 1080×1920) y en horizontal.
 6. **Datos de facturación**: siempre, sin importar cómo se pague (cédula, RUC o consumidor final hasta $50).
 7. **Método de pago**: tarjeta, Deuna (código único de 6 dígitos) o efectivo en caja.
 8. **Cobro**: con Deuna el tótem muestra un código único de 6 dígitos; el cliente lo digita en su app, ve el monto, paga y el tótem muestra "¡Pago aceptado!". En el demo se simula con la barra "MODO DEMO".
-9. **Confirmación**: número de pedido y reinicio automático.
+9. **Confirmación**: número de pedido, impresión automática del ticket (80 mm, con logo; con datos del cliente o "CONSUMIDOR FINAL") y reinicio automático.
 
 Si nadie toca la pantalla durante 75 s, pregunta "¿Sigues ahí?" y a los 15 s vuelve al inicio.
 
