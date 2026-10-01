@@ -1,0 +1,45 @@
+.ticket {
+  width: 80mm; /* usa 58mm si tu impresora es de ese ancho */
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+}
+
+.ticket .centro { text-align: center; }
+.ticket .derecha { text-align: right; }
+.ticket .negrita { font-weight: bold; }
+
+.ticket table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.ticket th, .ticket td {
+  text-align: left;
+  padding: 1px 2px;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #ticket, #ticket * {
+    visibility: visible;
+  }
+
+  #ticket {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  @page {
+    size: 80mm auto; /* ancho fijo, alto automatico segun el contenido */
+    margin: 0;
+  }
+}
