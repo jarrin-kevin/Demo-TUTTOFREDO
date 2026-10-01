@@ -1,0 +1,32 @@
+# Compila el servicio de impresión (impresora/) en Windows y lo publica
+# como TuttoImpresora.zip en el release "impresora", de donde lo baja
+# kiosko/instalar-impresora.ps1.
+name: Compilar servicio de impresión
+
+on:
+  push:
+    branches: [claude/tuttofredo-payment-totem-16yzp8]
+    paths: ['impresora/**', '.github/workflows/impresora.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet publish impresora/TuttoImpresora.csproj -c Release -o publish
+      - run: Compress-Archive -Path publish/* -DestinationPath TuttoImpresora.zip
+        shell: pwsh
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: impresora
+          name: Servicio de impresión del tótem
+          body: Descarga e instala con kiosko/instalar-impresora.bat
+          target_commitish: ${{ github.sha }}
+          files: TuttoImpresora.zip

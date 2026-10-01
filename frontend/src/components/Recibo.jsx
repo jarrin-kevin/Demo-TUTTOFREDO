@@ -1,23 +1,17 @@
-// Ticket para imprimir desde el navegador (SPA, sin backend).
-// Usa window.print() -> pasa por el driver de Windows de la impresora,
-// que ya confirmaste que corta bien (a diferencia del RAW de ESC_POS_USB_NET).
-// Se monta fuera de #root, así al imprimir solo sale el ticket.
+// Ticket del pedido. Primero se manda al servicio local de impresión
+// (impresora/, ESC/POS con ESC_POS_USB_NET): corta al ras y sin márgenes.
+// Si el servicio no está corriendo, se imprime con window.print() como
+// respaldo. Se monta fuera de #root, así al imprimir solo sale el ticket.
 
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { branch, taxBreakdown } from '../lib/catalog.js';
+import { METODOS, fechaHora, printWithService } from '../lib/ticket.js';
 import './recibo.css';
 
-const METODOS = { card: 'Tarjeta', deuna: 'Deuna', cash: 'Efectivo (pagar en caja)' };
 const CONSUMIDOR_FINAL_ID = '9999999999999';
 
 const dos = n => n.toFixed(2);
-
-function fechaHora(iso) {
-  const d = iso ? new Date(iso) : new Date();
-  const p = n => String(n).padStart(2, '0');
-  return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`;
-}
 
 function Cliente({ billing }) {
   if (!billing || billing.type === 'final') {
@@ -61,6 +55,13 @@ export function printTicket() {
   window.print();
 }
 
+// Imprime el pedido: servicio local y, si no responde, el navegador.
+export async function printOrder(order) {
+  if (await printWithService(order)) return 'servicio';
+  printTicket();
+  return 'navegador';
+}
+
 // autoPrint: imprime apenas carga el logo.
 export default function Recibo({ order, autoPrint }) {
   const logo = useRef(null);
@@ -77,7 +78,7 @@ export default function Recibo({ order, autoPrint }) {
       img.addEventListener('load', resolve, { once: true });
       img.addEventListener('error', resolve, { once: true });
     });
-    ready.then(() => !cancelled && printTicket());
+    ready.then(() => !cancelled && printOrder(order));
     return () => {
       cancelled = true;
     };
