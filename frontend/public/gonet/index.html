@@ -217,6 +217,14 @@ body { padding-left: 0; padding-right: 0; padding-block: 0; background: #06120d;
 .bg::before, .bg::after { content: ""; position: absolute; height: calc(.5 * var(--u)); border-radius: calc(1 * var(--u)); background: linear-gradient(90deg, transparent, rgba(139,224,42,.9), transparent); filter: blur(calc(.6 * var(--u))); opacity: .55; }
 .bg::before { left: -10%; width: 70%; top: 26%; transform: rotate(-8deg); }
 .bg::after { right: -15%; width: 60%; bottom: 31%; transform: rotate(-8deg); opacity: .35; }
+
+/* Respaldo para Chrome antiguo: sin dvh, sin unidades cq ni inset */
+.stage { height: 100vh; height: 100dvh; top: 0; left: 0; right: 0; bottom: 0; }
+.bg { top: 0; left: 0; right: 0; bottom: 0; }
+.stage > * { --u: calc(min(100vw, 100vh * 9 / 16) / 100); }
+@supports (width: 1cqw) {
+  .stage > * { --u: calc(min(100cqw, 100cqh * 9 / 16) / 100); }
+}
 </style>
 
 <main class="stage" aria-live="polite">
