@@ -44,9 +44,9 @@ button:focus-visible { outline: 3px solid var(--g2); outline-offset: 3px; }
 .stage {
   container-type: inline-size;
   position: relative; overflow: hidden;
-  width: min(100%, calc((100dvh - 16px) * 9 / 16));
-  height: calc(100dvh - 16px);
-  min-height: 520px;
+  width: min(100%, calc(100dvh * 9 / 16));
+  height: 100dvh;
+  min-height: 0;
   border-radius: 14px;
   background:
     radial-gradient(120% 55% at 90% -5%, rgba(19,197,90,.40), transparent 62%),
@@ -136,7 +136,7 @@ button:focus-visible { outline: 3px solid var(--g2); outline-offset: 3px; }
 .now .lbl { font-size: 3cqw; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
 .now .num { font-family: var(--font-num); font-weight: 700; font-size: 38cqw; line-height: .92; font-variant-numeric: tabular-nums; }
 .now .win { display: inline-block; margin-top: 1cqw; padding: 1.6cqw 5cqw; border-radius: 999px; background: var(--paper); color: var(--paper-ink); font-size: 5cqw; font-weight: 900; text-transform: uppercase; }
-.now.flash { animation: flash 1s ease-in-out 3; }
+.now.flash { animation: flash 1s ease-in-out 2; }
 @keyframes flash { 50% { box-shadow: 0 0 0 1.6cqw rgba(139,224,42,.7), 0 2cqw 5cqw rgba(0,0,0,.45); } }
 .sec-h { font-size: 2.4cqw; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--mut); margin: 0 0 1.6cqw; }
 .recent { display: flex; flex-direction: column; gap: 1.6cqw; }
@@ -184,7 +184,11 @@ button:focus-visible { outline: 3px solid var(--g2); outline-offset: 3px; }
 .title { text-align: left; }
 @media (prefers-reduced-motion: reduce) { .chip.in { animation: none; } }
 
-body { gap: 0; justify-content: center; }
+html, body { overflow: hidden; height: 100%; }
+body { gap: 0; justify-content: center; padding-block: 0; }
+.row { padding: 1.4cqw 3.5cqw; }
+.row .n { font-size: 6.8cqw; }
+.recent { gap: 1.3cqw; }
 </style>
 
 <main class="stage" aria-live="polite">
@@ -198,6 +202,10 @@ body { gap: 0; justify-content: center; }
     <div>
       <h2 class="sec-h">Espera aproximada</h2>
       <div class="est" id="est"></div>
+    </div>
+    <div>
+      <h2 class="sec-h">Últimos llamados</h2>
+      <div class="recent" id="recent"></div>
     </div>
     <div class="grow">
       <h2 class="sec-h" style="margin-bottom:0">Siguientes turnos</h2>
@@ -238,6 +246,7 @@ body { gap: 0; justify-content: center; }
   WINS[0].cur = { k: 'S', n: 12 }; WINS[1].cur = { k: 'P', n: 20 }; WINS[2].cur = { k: 'C', n: 4 };
   WINS.forEach(function (w, i) { w.until = Date.now() + (4 + i * 5) * 1000; });
   lastCalled = WINS[2].cur; lastWin = 3;
+  var hist = [{ k: 'C', n: 4, w: 3 }, { k: 'P', n: 20, w: 2 }, { k: 'S', n: 12, w: 1 }, { k: 'E', n: 8, w: 3 }];
 
   function render(flash) {
     var el = $('now');
@@ -251,7 +260,10 @@ body { gap: 0; justify-content: center; }
     $('est').innerHTML = SERV.map(function (s) {
       return '<div><span>' + s.nm + '</span><b>≈ ' + est(s.k) + ' min</b></div>';
     }).join('');
-    var nx = waiting().slice(0, 10), nowSeen = {};
+    $('recent').innerHTML = hist.slice(1, 4).map(function (h) {
+      return '<div class="row"><span class="n">' + code(h) + '</span><span class="w">Ventanilla ' + h.w + '</span></div>';
+    }).join('');
+    var nx = waiting().slice(0, 12), nowSeen = {};
     $('next').innerHTML = nx.map(function (t) {
       var id = code(t); nowSeen[id] = 1;
       return '<span class="chip' + (seen[id] ? '' : ' in') + '">' + id + '</span>';
@@ -267,7 +279,7 @@ body { gap: 0; justify-content: center; }
       if (w.cur && n >= w.until) { w.cur = null; changed = true; }
       if (!w.cur && n >= (w.idle || 0)) {
         var mine = waiting().filter(function (t) { return w.sv.indexOf(t.k) > -1; });
-        if (mine.length) { var t = mine[0]; t.st = 'call'; w.cur = t; w.until = n + rnd(9, 18); lastCalled = t; lastWin = w.id; flash = true; changed = true; }
+        if (mine.length) { var t = mine[0]; t.st = 'call'; w.cur = t; w.until = n + rnd(9, 18); lastCalled = t; lastWin = w.id; hist.unshift({ k: t.k, n: t.n, w: w.id }); if (hist.length > 6) hist.pop(); flash = true; changed = true; }
         else w.idle = n + 1500;
       }
     });
