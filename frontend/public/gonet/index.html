@@ -52,10 +52,12 @@ body { font-family: "Montserrat", "Arial Black", Arial, sans-serif; color: #ffff
 
 #recT { top: 1340px; }
 #rec { top: 1385px; height: 230px; }
-.row { position: absolute; left: 0; width: 960px; height: 100px; border-radius: 24px; background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.14); }
+.row { position: absolute; left: 0; width: 960px; height: 100px; overflow: hidden; border-radius: 24px; background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.14); }
 .row .n { position: absolute; left: 36px; top: 10px; font-size: 68px; font-weight: 900; line-height: 80px; }
 .row .w { position: absolute; right: 36px; top: 30px; font-size: 34px; font-weight: 900; color: #8be02a; text-transform: uppercase; }
 
+#screen.land #nownum { font-size: 300px; line-height: 340px; height: 340px; }
+#screen.land #now .lbl { padding-top: 40px; }
 #nextT { top: 1640px; }
 #next { top: 1685px; height: 70px; overflow: hidden; white-space: nowrap; }
 .chip { display: inline-block; margin-right: 14px; padding: 6px 22px; border-radius: 40px; background: rgba(255,255,255,.09); border: 2px solid rgba(255,255,255,.18); font-size: 44px; font-weight: 900; line-height: 52px; }
@@ -122,37 +124,60 @@ body { font-family: "Montserrat", "Arial Black", Arial, sans-serif; color: #ffff
   for (i = 0; i < 3; i++) WINS[i].until = now() + (4 + i * 5) * 1000;
   var lastCalled = WINS[2].cur, lastWin = 3;
 
+  // Dos lienzos fijos: vertical 1080x1920 y horizontal 1920x1080. Se elige según la proporción del marco.
+  var L = {
+    port: { W: 1080, H: 1920, wins: 330, wbW: 300, eW: 468, eX: 492, eY: 116, rowW: 960, rowY: 118, rows: 2, chipsW: 960, numMax: 900,
+      pos: { head: [60, 50, 960], now: [60, 240, 960, 560], wins: [60, 840, 960], estT: [60, 1050, 960], est: [60, 1095, 960], recT: [60, 1340, 960], rec: [60, 1385, 960], nextT: [60, 1640, 960], next: [60, 1685, 960], promo: [60, 1780, 960] } },
+    land: { W: 1920, H: 1080, wins: 302, wbW: 276, eW: 428, eX: 452, eY: 110, rowW: 880, rowY: 100, rows: 3, chipsW: 860, numMax: 800,
+      pos: { head: [60, 40, 1800], now: [60, 200, 860, 540], wins: [980, 200, 880], estT: [980, 400, 880], est: [980, 440, 880], recT: [980, 680, 880], rec: [980, 720, 880], nextT: [60, 775, 860], next: [60, 815, 860], promo: [60, 920, 860] } }
+  };
+  var mode = 'port', M = L.port;
+  function place() {
+    var k, e, v;
+    for (k in M.pos) {
+      e = el(k); v = M.pos[k];
+      e.style.left = v[0] + 'px'; e.style.top = v[1] + 'px'; e.style.width = v[2] + 'px';
+      if (v[3]) e.style.height = v[3] + 'px';
+    }
+    var sc = el('screen');
+    sc.style.width = M.W + 'px'; sc.style.height = M.H + 'px';
+    sc.className = mode === 'land' ? 'land' : '';
+  }
+
   function render(flash) {
     var h = '', j, w, nb = el('now');
     el('nowtxt').innerHTML = code(lastCalled);
     el('nowwin').innerHTML = 'Ventanilla ' + lastWin;
     var nn = el('nownum'), tx = el('nowtxt'); nn.style.fontSize = '';
-    var fs = 270; while (tx.offsetWidth > 900 && fs > 120) { fs -= 10; nn.style.fontSize = fs + 'px'; }
+    var fs = 270; if (mode === 'land') fs = 300;
+    while (tx.offsetWidth > M.numMax && fs > 120) { fs -= 10; nn.style.fontSize = fs + 'px'; }
     nb.className = 'abs';
     if (flash) { void nb.offsetWidth; nb.className = 'abs flash'; }
 
     for (j = 0; j < WINS.length; j++) {
       w = WINS[j];
-      h += '<div class="wbox' + (w.id === lastWin ? ' hot' : '') + '" style="left:' + (j * 330) + 'px"><div class="lbl">Ventanilla ' + w.id + '</div>' +
+      h += '<div class="wbox' + (w.id === lastWin ? ' hot' : '') + '" style="left:' + (j * M.wins) + 'px;width:' + M.wbW + 'px"><div class="lbl">Ventanilla ' + w.id + '</div>' +
         (w.cur ? '<div class="v">' + code(w.cur) + '</div>' : '<div class="v free">Libre</div>') + '</div>';
     }
     el('wins').innerHTML = h;
 
     h = '';
     for (j = 0; j < SERV.length; j++) {
-      h += '<div class="ebox" style="left:' + ((j % 2) * 492) + 'px;top:' + (Math.floor(j / 2) * 116) + 'px"><span class="n">' + SERV[j].nm + '</span><span class="t">&asymp; ' + est(SERV[j]) + ' min</span></div>';
+      h += '<div class="ebox" style="width:' + M.eW + 'px;left:' + ((j % 2) * M.eX) + 'px;top:' + (Math.floor(j / 2) * M.eY) + 'px"><span class="n">' + SERV[j].nm + '</span><span class="t">&asymp; ' + est(SERV[j]) + ' min</span></div>';
     }
     el('est').innerHTML = h;
 
     h = '';
-    for (j = 1; j < 3 && j < hist.length; j++) {
-      h += '<div class="row" style="top:' + ((j - 1) * 118) + 'px"><span class="n">' + code(hist[j]) + '</span><span class="w">Ventanilla ' + hist[j].w + '</span></div>';
+    for (j = 1; j <= M.rows && j < hist.length; j++) {
+      h += '<div class="row" style="width:' + M.rowW + 'px;height:' + (M.rowY - 12) + 'px;top:' + ((j - 1) * M.rowY) + 'px"><span class="n">' + code(hist[j]) + '</span><span class="w">Ventanilla ' + hist[j].w + '</span></div>';
     }
     el('rec').innerHTML = h;
 
     var nx = waiting(); h = '';
-    for (j = 0; j < nx.length && j < 5; j++) h += '<span class="chip">' + code(nx[j]) + '</span>';
-    el('next').innerHTML = h || '<span class="lbl">No hay personas esperando</span>';
+    for (j = 0; j < nx.length && j < 8; j++) h += '<span class="chip">' + code(nx[j]) + '</span>';
+    var nxEl = el('next');
+    nxEl.innerHTML = h || '<span class="lbl">No hay personas esperando</span>';
+    while (nxEl.lastChild && nxEl.scrollWidth > M.chipsW + 2 && nxEl.children.length > 1) nxEl.removeChild(nxEl.lastChild);
   }
 
   var nextArrival = now() + 2500;
@@ -177,12 +202,18 @@ body { font-family: "Montserrat", "Arial Black", Arial, sans-serif; color: #ffff
     if (changed) render(flash);
   }
 
-  function fit() {
-    var W = window.innerWidth || document.documentElement.clientWidth;
-    var H = window.innerHeight || document.documentElement.clientHeight;
-    var s = Math.min(W / 1080, H / 1920);
+  var lastW = 0, lastH = 0;
+  function fit(force) {
+    var W = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var H = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    if (!W || !H) return;
+    if (!force && W === lastW && H === lastH) return;
+    lastW = W; lastH = H;
+    var m = W / H > 1.05 ? 'land' : 'port';
+    if (m !== mode || force) { mode = m; M = L[m]; place(); render(false); }
+    var s = Math.min(W / M.W, H / M.H);
     var sc = el('screen');
-    var t = 'translate(' + Math.round((W - 1080 * s) / 2) + 'px,' + Math.round((H - 1920 * s) / 2) + 'px) scale(' + s + ')';
+    var t = 'translate(' + Math.round((W - M.W * s) / 2) + 'px,' + Math.round((H - M.H * s) / 2) + 'px) scale(' + s + ')';
     sc.style.webkitTransform = t; sc.style.transform = t;
   }
 
@@ -191,8 +222,12 @@ body { font-family: "Montserrat", "Arial Black", Arial, sans-serif; color: #ffff
     el('clock').innerHTML = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
   }
 
-  fit(); clock(); render(false);
-  window.addEventListener('resize', fit);
+  place(); clock(); render(false); fit(true);
+  // En marcos (iframe) el tamaño puede llegar tarde: se vuelve a medir al cargar y cada segundo
+  window.addEventListener('resize', function () { fit(false); });
+  window.addEventListener('load', function () { fit(true); });
+  setTimeout(function () { fit(true); }, 500);
+  setInterval(function () { fit(false); }, 1000);
   setInterval(clock, 10000);
   setInterval(step, 1000);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { render(false); });
